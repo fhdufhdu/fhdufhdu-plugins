@@ -54,6 +54,7 @@ daily/
 reviews/
 cards/
 sources/
+persistent/
 ```
 
 Read `references/record-schema.md` before creating or modifying study files.
@@ -64,20 +65,23 @@ Read `references/record-schema.md` before creating or modifying study files.
 2. Fetch the page or document and identify title, source, date, and difficulty.
 3. Do not reproduce the full copyrighted document in chat or records. Work with one sentence at a time and store only necessary excerpts for study.
 4. Split the document into study sentences. Skip navigation, ads, captions, boilerplate, and duplicated text.
-5. Present exactly one sentence and ask the user to translate it into Korean.
-6. Wait for the user's answer.
-7. If the user asks a question instead of translating, answer the question briefly, do not mark the sentence as attempted, then present the same sentence again and ask the user to translate it into Korean.
-8. Give concise feedback only after the user provides a translation:
+5. Before new reading, show a short warm-up from persistent weak items if any exist.
+6. Present exactly one sentence and ask the user to translate it into Korean.
+7. Wait for the user's answer.
+8. If the user asks a question instead of translating, answer the question briefly, do not mark the sentence as attempted, then present the same sentence again and ask the user to translate it into Korean.
+9. Give concise feedback only after the user provides a translation:
    - accuracy: correct / partial / incorrect
    - better translation when useful
    - one or two key reasons
    - vocabulary, idiom, grammar, usage, or structure worth remembering
-9. Record weak points as they happen. Prefer specific labels: vocabulary, idiom, phrasal verb, preposition, tense/aspect, clause structure, modifier attachment, reference/pronoun, nuance, context inference, natural Korean rendering.
-10. Continue sentence by sentence until the selected document portion is complete or the user stops.
-11. Save the daily record and review cards.
-12. Run due reviews for records from 1, 4, 7, and 30 days before today's date.
-13. Update the old records with today's review result and any newly observed weak points.
-14. Commit and push repository changes.
+10. Record weak points as they happen. Prefer specific labels: vocabulary, idiom, phrasal verb, preposition, tense/aspect, clause structure, modifier attachment, reference/pronoun, nuance, context inference, natural Korean rendering.
+11. Promote repeatedly missed or repeatedly questioned items into persistent weak items.
+12. Continue sentence by sentence until the selected document portion is complete or the user stops.
+13. Save the daily record and review cards.
+14. Run due reviews for records from 1, 4, 7, and 30 days before today's date.
+15. Update the old records with today's review result and any newly observed weak points.
+16. Update persistent weak items based on today's misses, improvements, and successful recalls.
+17. Commit and push repository changes.
 
 ## Question Handling During Translation
 
@@ -95,6 +99,34 @@ Original sentence...
 ```
 
 If the question reveals a likely weak point, remember it as a candidate weak point, but confirm it through the user's later translation before assigning review priority.
+
+## Persistent Weak Items
+
+Keep long-running weak items under:
+
+`persistent/weak-items.jsonl`
+
+Use this file for items the user repeatedly fails to recall, repeatedly mistranslates, or repeatedly asks about across sessions. These are separate from ordinary 1/4/7/30-day review cards because they should keep appearing until the user demonstrates stable recall.
+
+Promote an item into persistent weak items when any of these are true:
+
+- the same vocabulary, idiom, grammar pattern, or sentence structure is missed at least twice
+- the user asks about the same point in multiple sessions
+- a high-priority review item remains weak after review
+- the item is foundational and blocks understanding of many sentences
+
+At the start of each study session, show 3-7 active persistent weak items before the new document. Keep this warm-up short: ask for recall, a quick translation, or a usage explanation, then give concise feedback.
+
+During the session, also reuse persistent weak items when they naturally connect to the current sentence. Do not overload the user; prefer a few high-value exposures over a long drill.
+
+Update each persistent item after exposure:
+
+- increase `miss_count` when the user cannot recall it
+- increase `success_count` when the user recalls it correctly
+- update `last_seen` on every exposure
+- set `status` to `active`, `watch`, or `retired`
+
+Move an item from `active` to `watch` after at least 3 successful recalls across different days. Move it to `retired` only after it remains correct after a later review. Retired items do not need daily exposure, but may be sampled occasionally.
 
 ## Review Policy
 
@@ -156,6 +188,10 @@ Source metadata goes under:
 
 `sources/YYYY/YYYY-MM-DD-slug.md`
 
+Persistent weak items go under:
+
+`persistent/weak-items.jsonl`
+
 Always include:
 
 - URL
@@ -185,7 +221,7 @@ After writing:
 ```bash
 cd ~/.english-reading-study/repo
 git status --short
-git add daily reviews cards sources
+git add daily reviews cards sources persistent
 git commit -m "Add English study record for YYYY-MM-DD"
 git push
 ```

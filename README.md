@@ -48,6 +48,7 @@ skills/english-reading-study
 - `reviews/`: 복습 세션 요약
 - `cards/`: 재사용 가능한 복습 카드(JSONL)
 - `sources/`: 전체 원문을 제외한 출처 메타데이터
+- `persistent/`: 계속 외우지 못하는 장기 미숙 항목
 
 학습 기록, 복습 기록, 문서 설명은 한국어로 작성합니다. 경로명, YAML frontmatter 키, JSON 키는 도구 호환성을 위해 영어를 유지합니다.
 

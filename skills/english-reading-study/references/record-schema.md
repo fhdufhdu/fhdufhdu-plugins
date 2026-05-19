@@ -190,3 +190,39 @@ copyright_note: "전체 원문은 저장하지 않고, 학습에 필요한 짧�
 3. 당일 복습 요약 파일.
 
 전체 원문은 저장하지 않는다. 문장별 피드백에 필요한 짧은 발췌만 저장한다.
+
+## 장기 미숙 항목
+
+경로:
+
+`persistent/weak-items.jsonl`
+
+일반 복습 카드와 별도로, 계속 외우지 못하거나 여러 번 틀리는 항목을 보관한다. 이 파일의 항목은 매 학습 세션에서 짧게 반복 노출한다.
+
+한 줄에 JSON 객체 하나씩 작성한다. JSON 키는 영어로 유지하고 값은 필요한 경우 한국어로 작성한다.
+
+```json
+{"id":"P001","created_at":"YYYY-MM-DD","updated_at":"YYYY-MM-DD","status":"active","kind":"grammar","front":"as + clause","back":"문맥에 따라 '~하면서', '~할 때', '~때문에' 등으로 해석된다.","weak_point":"as의 의미를 이유로만 고정해서 해석함","examples":["짧은 원문 발췌"],"source_records":["daily/YYYY/YYYY-MM-DD-slug.md#S001"],"miss_count":2,"success_count":0,"last_seen":"YYYY-MM-DD","next_exposure":"YYYY-MM-DD","notes":["YYYY-MM-DD: 복습 후에도 의미 구분이 약함"]}
+```
+
+상태값:
+
+- active: 매 학습마다 우선 노출할 항목
+- watch: 정답률이 좋아졌지만 가끔 확인할 항목
+- retired: 안정적으로 기억해서 일반 노출에서 제외할 항목
+
+승격 기준:
+
+- 같은 단어, 숙어, 문법, 문장 구조를 2회 이상 틀림
+- 여러 세션에서 같은 질문을 반복함
+- high 우선순위 복습 카드가 복습 후에도 약함
+- 다른 문장을 이해하는 데 계속 방해가 되는 핵심 항목
+
+노출 규칙:
+
+1. 새 문서 학습 전에 `active` 항목 3-7개를 짧게 확인한다.
+2. 현재 문장과 관련 있는 미숙 항목은 학습 중 다시 연결해서 설명한다.
+3. 맞히면 `success_count`를 올리고 `last_seen`을 갱신한다.
+4. 틀리면 `miss_count`를 올리고 `next_exposure`를 가까운 날짜로 둔다.
+5. 서로 다른 날짜에 3회 이상 안정적으로 맞히면 `watch`로 낮춘다.
+6. 이후 복습에서도 맞히면 `retired`로 바꿀 수 있다.
