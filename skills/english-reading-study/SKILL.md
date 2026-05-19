@@ -66,17 +66,35 @@ Read `references/record-schema.md` before creating or modifying study files.
 4. Split the document into study sentences. Skip navigation, ads, captions, boilerplate, and duplicated text.
 5. Present exactly one sentence and ask the user to translate it into Korean.
 6. Wait for the user's answer.
-7. Give concise feedback:
+7. If the user asks a question instead of translating, answer the question briefly, do not mark the sentence as attempted, then present the same sentence again and ask the user to translate it into Korean.
+8. Give concise feedback only after the user provides a translation:
    - accuracy: correct / partial / incorrect
    - better translation when useful
    - one or two key reasons
    - vocabulary, idiom, grammar, usage, or structure worth remembering
-8. Record weak points as they happen. Prefer specific labels: vocabulary, idiom, phrasal verb, preposition, tense/aspect, clause structure, modifier attachment, reference/pronoun, nuance, context inference, natural Korean rendering.
-9. Continue sentence by sentence until the selected document portion is complete or the user stops.
-10. Save the daily record and review cards.
-11. Run due reviews for records from 1, 4, 7, and 30 days before today's date.
-12. Update the old records with today's review result and any newly observed weak points.
-13. Commit and push repository changes.
+9. Record weak points as they happen. Prefer specific labels: vocabulary, idiom, phrasal verb, preposition, tense/aspect, clause structure, modifier attachment, reference/pronoun, nuance, context inference, natural Korean rendering.
+10. Continue sentence by sentence until the selected document portion is complete or the user stops.
+11. Save the daily record and review cards.
+12. Run due reviews for records from 1, 4, 7, and 30 days before today's date.
+13. Update the old records with today's review result and any newly observed weak points.
+14. Commit and push repository changes.
+
+## Question Handling During Translation
+
+When waiting for a translation, distinguish a translation attempt from a question. If the user asks about vocabulary, grammar, sentence structure, background context, study flow, or asks for a hint, answer that question first.
+
+After answering, re-show the same original sentence and ask for the Korean translation again. Do not advance to the next sentence and do not record accuracy until the user actually attempts a translation.
+
+Use this shape:
+
+```text
+질문 답변: ...
+
+다시 이 문장을 해석해 주세요.
+Original sentence...
+```
+
+If the question reveals a likely weak point, remember it as a candidate weak point, but confirm it through the user's later translation before assigning review priority.
 
 ## Review Policy
 
