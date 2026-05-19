@@ -1,13 +1,27 @@
 # English Reading Study
 
-Personal English reading practice repository and plugin.
+Personal English reading practice plugin.
+
+The plugin stores runtime configuration under:
+
+```text
+~/.english-reading-study/info.json
+```
+
+The user's learning data repository is cloned under:
+
+```text
+~/.english-reading-study/repo
+```
+
+On first use, the skill asks for the Git repository URL that should store study records, clones it, and saves the URL plus local clone path to `info.json`.
 
 ## Data Layout
 
-- `daily/`: daily sentence-by-sentence study records
-- `reviews/`: review session summaries
-- `cards/`: reusable review cards in JSONL
-- `sources/`: source metadata without full copyrighted article bodies
+- `~/.english-reading-study/repo/daily/`: daily sentence-by-sentence study records
+- `~/.english-reading-study/repo/reviews/`: review session summaries
+- `~/.english-reading-study/repo/cards/`: reusable review cards in JSONL
+- `~/.english-reading-study/repo/sources/`: source metadata without full copyrighted article bodies
 - `plugins/english-reading-study/`: Codex and Claude plugin package
 
 ## Codex Plugin

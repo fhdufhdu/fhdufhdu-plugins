@@ -2,6 +2,28 @@
 
 Use these formats for durable study records. Keep records concise and easy to parse.
 
+## Internal Configuration
+
+Path:
+
+`~/.english-reading-study/info.json`
+
+The skill must create this file after receiving the user's study repository URL and cloning it into `~/.english-reading-study/repo`.
+
+Schema:
+
+```json
+{
+  "repo_url": "https://github.com/user/english-study-data.git",
+  "repo_path": "/Users/name/.english-reading-study/repo",
+  "default_branch": "main",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ"
+}
+```
+
+Update `updated_at` when the repository configuration changes. Do not store document URLs, article content, or study history in `info.json`; those belong inside the cloned repository.
+
 ## Daily Record
 
 Path:

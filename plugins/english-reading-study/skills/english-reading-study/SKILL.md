@@ -1,6 +1,6 @@
 ---
 name: english-reading-study
-description: Run interactive English reading practice from a user-provided document URL, sentence by sentence, with concise translation feedback, vocabulary/grammar/weak-point capture, spaced review for 1/4/7/30-day due items, and persistent study records committed to the GitHub repository fhdufhdu/eng-reading-study.git. Use when the user asks to study English from an article, URL, document, reading passage, translation practice, daily English study, or review prior English study records.
+description: Run interactive English reading practice from a user-provided document URL, sentence by sentence, with concise translation feedback, vocabulary/grammar/weak-point capture, spaced review for 1/4/7/30-day due items, and persistent study records committed to a user-configured Git repository cloned under ~/.english-reading-study. Use when the user asks to study English from an article, URL, document, reading passage, translation practice, daily English study, configure the study repository, or review prior English study records.
 ---
 
 # English Reading Study
@@ -9,21 +9,43 @@ description: Run interactive English reading practice from a user-provided docum
 
 Guide a daily English reading session. The user provides a document URL, translates one sentence at a time, receives brief correction-focused feedback, and gets durable records saved to the study repository.
 
-Use the repository as the source of truth:
+Use the user-configured study repository as the source of truth for learning data. The plugin repository only distributes the skill; it is not the default data store.
 
-`https://github.com/fhdufhdu/eng-reading-study.git`
-
-Before every session, make sure the repo is available locally and up to date. After every completed learning or review segment, update records, commit the changes, and push when credentials allow.
+Before every session, make sure the user's study repo is configured, available locally, and up to date. After every completed learning or review segment, update records, commit the changes, and push when credentials allow.
 
 ## Repository Setup
 
-Use a stable local checkout:
+Use this internal storage root:
 
-`${CODEX_HOME:-$HOME/.codex}/data/eng-reading-study`
+`~/.english-reading-study`
 
-If it does not exist, clone it from GitHub. If it exists, pull with `--ff-only` before reading or writing records. If push fails because authentication is unavailable, keep the local commit and clearly tell the user.
+Use this local checkout for the user's study data:
 
-If GitHub returns `Repository not found`, treat the repository as private or not yet created. Ask the user to confirm repository access, authenticate Git, or create the repository before relying on persistent storage.
+`~/.english-reading-study/repo`
+
+Use this configuration file:
+
+`~/.english-reading-study/info.json`
+
+If `info.json` is missing or invalid, ask the user for the Git repository URL to use for study records. Then create the internal storage root, clone the repository into `repo`, and write `info.json`.
+
+`info.json` must include:
+
+```json
+{
+  "repo_url": "https://github.com/user/english-study-data.git",
+  "repo_path": "/Users/name/.english-reading-study/repo",
+  "default_branch": "main",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "updated_at": "YYYY-MM-DDTHH:MM:SSZ"
+}
+```
+
+If `repo` already exists, verify it is a Git repository and that `git remote get-url origin` matches `info.json.repo_url`. If it does not match, stop and ask the user whether to switch repositories.
+
+If the repository URL cannot be cloned, tell the user the exact failure and ask them to confirm the URL, create the repository, or authenticate Git.
+
+If the repo exists and matches, pull with `--ff-only` before reading or writing records. If push fails because authentication is unavailable, keep the local commit and clearly tell the user.
 
 Create these directories when missing:
 
@@ -134,12 +156,14 @@ Always include:
 Before writing:
 
 ```bash
+cd ~/.english-reading-study/repo
 git pull --ff-only
 ```
 
 After writing:
 
 ```bash
+cd ~/.english-reading-study/repo
 git status --short
 git add daily reviews cards sources
 git commit -m "Add English study record for YYYY-MM-DD"

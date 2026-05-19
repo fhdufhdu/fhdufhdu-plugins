@@ -1,6 +1,6 @@
 {
   "name": "english-reading-study",
-  "description": "Interactive English reading practice from URLs with spaced review records saved to a GitHub study repository.",
+  "description": "Interactive English reading practice from URLs with spaced review records saved to a user-configured Git repository.",
   "version": "0.1.0",
   "author": {
     "name": "fhdufhdu"

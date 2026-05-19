@@ -1,7 +1,7 @@
 {
   "name": "english-reading-study",
   "version": "0.1.0",
-  "description": "Interactive English reading practice from URLs with spaced review records saved to a GitHub study repository.",
+  "description": "Interactive English reading practice from URLs with spaced review records saved to a user-configured Git repository.",
   "author": {
     "name": "fhdufhdu",
     "url": "https://github.com/fhdufhdu"
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "English Reading Study",
     "shortDescription": "Daily URL reading and review logs",
-    "longDescription": "Study English from a URL one sentence at a time, capture vocabulary and weak points, and maintain spaced review records in the eng-reading-study repository.",
+    "longDescription": "Study English from a URL one sentence at a time, capture vocabulary and weak points, and maintain spaced review records in a user-configured Git repository cloned under ~/.english-reading-study.",
     "developerName": "fhdufhdu",
     "category": "Productivity",
     "capabilities": [
