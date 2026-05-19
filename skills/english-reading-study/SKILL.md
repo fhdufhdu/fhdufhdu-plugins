@@ -9,7 +9,7 @@ description: 사용자 제공 문서 URL로 영어 리딩을 한 문장씩 학�
 
 Guide a daily English reading session. The user provides a document URL, translates one sentence at a time, receives brief correction-focused feedback, and gets durable records saved to the study repository.
 
-Use the user-configured study repository as the source of truth for learning data. The plugin repository only distributes the skill; it is not the default data store.
+Use the user-configured study repository as the source of truth for learning data. This repository only distributes the skill; it is not the default data store.
 
 Before every session, make sure the user's study repo is configured, available locally, and up to date. After every completed learning or review segment, update records, commit the changes, and push when credentials allow.
 
