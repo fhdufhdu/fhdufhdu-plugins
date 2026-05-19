@@ -1,0 +1,23 @@
+{
+  "name": "eng-reading-study",
+  "owner": {
+    "name": "fhdufhdu"
+  },
+  "description": "영어 리딩 학습 플러그인 마켓플레이스",
+  "plugins": [
+    {
+      "name": "english-reading-study",
+      "source": "./plugins/english-reading-study",
+      "displayName": "English Reading Study",
+      "description": "URL 기반 영어 리딩 학습과 간격 복습 기록을 사용자 설정 Git 저장소에 저장합니다.",
+      "category": "productivity",
+      "tags": [
+        "english",
+        "reading",
+        "study",
+        "translation",
+        "spaced-review"
+      ]
+    }
+  ]
+}
