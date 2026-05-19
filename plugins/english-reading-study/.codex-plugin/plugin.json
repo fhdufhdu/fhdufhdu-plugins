@@ -1,7 +1,7 @@
 {
   "name": "english-reading-study",
   "version": "0.1.0",
-  "description": "Interactive English reading practice from URLs with spaced review records saved to a user-configured Git repository.",
+  "description": "URL 기반 영어 리딩 학습과 간격 복습 기록을 사용자 설정 Git 저장소에 저장합니다.",
   "author": {
     "name": "fhdufhdu",
     "url": "https://github.com/fhdufhdu"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "English Reading Study",
-    "shortDescription": "Daily URL reading and review logs",
-    "longDescription": "Study English from a URL one sentence at a time, capture vocabulary and weak points, and maintain spaced review records in a user-configured Git repository cloned under ~/.english-reading-study.",
+    "shortDescription": "URL 리딩 학습과 복습 기록",
+    "longDescription": "URL 문서를 한 문장씩 해석하며 단어, 표현, 문법, 약점을 기록하고, ~/.english-reading-study 아래에 클론된 사용자 설정 Git 저장소에 간격 복습 기록을 유지합니다.",
     "developerName": "fhdufhdu",
     "category": "Productivity",
     "capabilities": [
@@ -29,9 +29,9 @@
     ],
     "websiteURL": "https://github.com/fhdufhdu/eng-reading-study",
     "defaultPrompt": [
-      "Start English reading study from this URL.",
-      "Review due English reading cards.",
-      "Save today's English study record."
+      "이 URL로 영어 리딩 학습을 시작해줘.",
+      "오늘 복습할 영어 카드를 확인해줘.",
+      "오늘 영어 학습 기록을 저장해줘."
     ],
     "brandColor": "#2563EB"
   }

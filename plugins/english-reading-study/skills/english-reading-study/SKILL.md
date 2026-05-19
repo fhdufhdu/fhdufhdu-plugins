@@ -1,6 +1,6 @@
 ---
 name: english-reading-study
-description: Run interactive English reading practice from a user-provided document URL, sentence by sentence, with concise translation feedback, vocabulary/grammar/weak-point capture, spaced review for 1/4/7/30-day due items, and persistent study records committed to a user-configured Git repository cloned under ~/.english-reading-study. Use when the user asks to study English from an article, URL, document, reading passage, translation practice, daily English study, configure the study repository, or review prior English study records.
+description: 사용자 제공 문서 URL로 영어 리딩을 한 문장씩 학습하고, 간단한 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 간격 복습, ~/.english-reading-study 아래에 클론된 사용자 설정 Git 저장소 커밋을 수행합니다. 영어 기사, URL, 문서, 리딩 지문, 번역 연습, 매일 영어공부, 학습 저장소 설정, 이전 영어 학습 복습 요청에 사용합니다.
 ---
 
 # English Reading Study
@@ -112,6 +112,8 @@ Use this shape:
 When the user's translation is good, confirm briefly and still capture any phrase worth remembering.
 
 ## Record Keeping
+
+Write repository-facing documents and study records in Korean. Keep machine-readable keys, directory names, file names, YAML frontmatter keys, and JSON keys in English for compatibility, but use Korean for Markdown headings, labels, feedback, explanations, review notes, and README-style documentation.
 
 Use stable IDs so later reviews can reference the same item:
 

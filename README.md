@@ -1,72 +1,74 @@
-# English Reading Study
+# 영어 리딩 학습
 
-Personal English reading practice plugin.
+영어 문서를 문장 단위로 읽고 해석하면서 학습 기록과 복습 기록을 남기는 개인용 플러그인입니다.
 
-The plugin stores runtime configuration under:
+## 내부 저장 위치
+
+플러그인은 실행 설정을 아래 파일에 저장합니다.
 
 ```text
 ~/.english-reading-study/info.json
 ```
 
-The user's learning data repository is cloned under:
+사용자의 실제 학습 데이터 저장소는 아래 위치에 클론합니다.
 
 ```text
 ~/.english-reading-study/repo
 ```
 
-On first use, the skill asks for the Git repository URL that should store study records, clones it, and saves the URL plus local clone path to `info.json`.
+처음 사용할 때 스킬은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이후 해당 저장소를 클론하고, 저장소 URL과 로컬 클론 경로를 `info.json`에 저장합니다.
 
-## Data Layout
+## 데이터 구조
 
-- `~/.english-reading-study/repo/daily/`: daily sentence-by-sentence study records
-- `~/.english-reading-study/repo/reviews/`: review session summaries
-- `~/.english-reading-study/repo/cards/`: reusable review cards in JSONL
-- `~/.english-reading-study/repo/sources/`: source metadata without full copyrighted article bodies
-- `plugins/english-reading-study/`: Codex and Claude plugin package
+- `~/.english-reading-study/repo/daily/`: 날짜별 문장 학습 기록
+- `~/.english-reading-study/repo/reviews/`: 복습 세션 요약
+- `~/.english-reading-study/repo/cards/`: 재사용 가능한 복습 카드(JSONL)
+- `~/.english-reading-study/repo/sources/`: 전체 원문을 제외한 출처 메타데이터
+- `plugins/english-reading-study/`: Codex와 Claude에서 사용할 플러그인 패키지
 
-## Codex Plugin
+학습 기록, 복습 기록, 문서 설명은 한국어로 작성합니다. 경로명, YAML frontmatter 키, JSON 키는 도구 호환성을 위해 영어를 유지합니다.
 
-The plugin lives at:
+## Codex 플러그인
+
+플러그인 위치:
 
 ```text
 plugins/english-reading-study
 ```
 
-It includes:
+포함 파일:
 
 - `.codex-plugin/plugin.json`
 - `skills/english-reading-study/SKILL.md`
 - `skills/english-reading-study/references/record-schema.md`
 
-The repo also includes a Codex marketplace file:
+Codex marketplace 파일도 함께 포함되어 있습니다.
 
 ```text
 .agents/plugins/marketplace.json
 ```
 
-## Claude Plugin
+## Claude 플러그인
 
-The same plugin folder includes:
+같은 플러그인 폴더에 Claude용 manifest가 있습니다.
 
 ```text
 plugins/english-reading-study/.claude-plugin/plugin.json
 ```
 
-For local testing after cloning this repository:
+저장소를 클론한 뒤 로컬 테스트:
 
 ```bash
 claude --plugin-dir ./plugins/english-reading-study
 ```
 
-Then use the namespaced skill:
+이후 namespaced skill을 사용합니다.
 
 ```text
 /english-reading-study:english-reading-study
 ```
 
-## Study Prompt
-
-Use a prompt like:
+## 학습 시작 예시
 
 ```text
 이 URL로 영어공부 시작해줘: https://example.com/article

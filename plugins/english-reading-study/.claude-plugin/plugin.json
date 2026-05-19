@@ -1,6 +1,6 @@
 {
   "name": "english-reading-study",
-  "description": "Interactive English reading practice from URLs with spaced review records saved to a user-configured Git repository.",
+  "description": "URL 기반 영어 리딩 학습과 간격 복습 기록을 사용자 설정 Git 저장소에 저장합니다.",
   "version": "0.1.0",
   "author": {
     "name": "fhdufhdu"
