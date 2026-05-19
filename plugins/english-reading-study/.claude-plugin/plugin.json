@@ -1,0 +1,10 @@
+{
+  "name": "english-reading-study",
+  "description": "Interactive English reading practice from URLs with spaced review records saved to a GitHub study repository.",
+  "version": "0.1.0",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "repository": "https://github.com/fhdufhdu/eng-reading-study",
+  "license": "UNLICENSED"
+}

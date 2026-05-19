@@ -1,0 +1,38 @@
+{
+  "name": "english-reading-study",
+  "version": "0.1.0",
+  "description": "Interactive English reading practice from URLs with spaced review records saved to a GitHub study repository.",
+  "author": {
+    "name": "fhdufhdu",
+    "url": "https://github.com/fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/eng-reading-study",
+  "repository": "https://github.com/fhdufhdu/eng-reading-study",
+  "license": "UNLICENSED",
+  "keywords": [
+    "english",
+    "reading",
+    "study",
+    "translation",
+    "spaced-review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "English Reading Study",
+    "shortDescription": "Daily URL reading and review logs",
+    "longDescription": "Study English from a URL one sentence at a time, capture vocabulary and weak points, and maintain spaced review records in the eng-reading-study repository.",
+    "developerName": "fhdufhdu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/fhdufhdu/eng-reading-study",
+    "defaultPrompt": [
+      "Start English reading study from this URL.",
+      "Review due English reading cards.",
+      "Save today's English study record."
+    ],
+    "brandColor": "#2563EB"
+  }
+}
