@@ -30,7 +30,7 @@ The data repository becomes the source of truth for study records. It receives t
 - `sources/`
 - `persistent/`
 
-The skill continues to use `~/.english-reading-study/info.json` and `~/.english-reading-study/repo` as documented. On first use, it asks the user for the study data Git repository URL and clones that repository into the local data checkout.
+The skill continues to use `~/.bookjakbookjak/info.json` and `~/.bookjakbookjak/repo` as documented. On first use, it asks the user for the study data Git repository URL and clones that repository into the local data checkout.
 
 ## Repository History
 
@@ -101,8 +101,8 @@ The README should explain:
 - Study data lives in `fhdufhdu/book-jak-book-jak-data`.
 - Users should register the plugin through Codex app, Codex CLI, or Claude Code plugin marketplace commands.
 - Users should not install the skill by manually cloning the repository into a skill directory.
-- On first study session, the skill asks for the data repository URL and stores that configuration under `~/.english-reading-study/info.json`.
-- The data checkout lives at `~/.english-reading-study/repo`.
+- On first study session, the skill asks for the data repository URL and stores that configuration under `~/.bookjakbookjak/info.json`.
+- The data checkout lives at `~/.bookjakbookjak/repo`.
 
 ## Error Handling
 

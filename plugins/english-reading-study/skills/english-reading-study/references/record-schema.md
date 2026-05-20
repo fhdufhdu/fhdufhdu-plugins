@@ -8,16 +8,16 @@
 
 경로:
 
-`~/.english-reading-study/info.json`
+`~/.bookjakbookjak/info.json`
 
-스킬은 사용자에게 학습 기록을 저장할 Git 저장소 URL을 받은 뒤, 해당 저장소를 `~/.english-reading-study/repo`에 클론하고 이 파일을 생성해야 한다.
+스킬은 사용자에게 학습 기록을 저장할 Git 저장소 URL을 받은 뒤, 해당 저장소를 `~/.bookjakbookjak/repo`에 클론하고 이 파일을 생성해야 한다.
 
 스키마:
 
 ```json
 {
   "repo_url": "https://github.com/user/english-study-data.git",
-  "repo_path": "/Users/name/.english-reading-study/repo",
+  "repo_path": "/Users/name/.bookjakbookjak/repo",
   "default_branch": "main",
   "created_at": "YYYY-MM-DDTHH:MM:SSZ",
   "updated_at": "YYYY-MM-DDTHH:MM:SSZ"

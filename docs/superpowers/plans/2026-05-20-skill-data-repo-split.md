@@ -405,13 +405,13 @@ skills/english-reading-study
 스킬은 실행 설정을 아래 파일에 저장합니다.
 
 ```text
-~/.english-reading-study/info.json
+~/.bookjakbookjak/info.json
 ```
 
 사용자의 실제 학습 데이터 저장소는 아래 위치에 클론합니다.
 
 ```text
-~/.english-reading-study/repo
+~/.bookjakbookjak/repo
 ```
 
 처음 사용할 때 스킬은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이 프로젝트의 기본 데이터 저장소는 아래 URL입니다.

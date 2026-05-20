@@ -1,6 +1,6 @@
 ---
 name: english-reading-study
-description: 사용자 제공 문서 URL로 영어 리딩을 한 문장씩 학습하고, 간단한 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 간격 복습, ~/.english-reading-study 아래에 클론된 사용자 설정 Git 저장소 커밋을 수행합니다. 영어 기사, URL, 문서, 리딩 지문, 번역 연습, 매일 영어공부, 학습 저장소 설정, 이전 영어 학습 복습 요청에 사용합니다.
+description: 사용자 제공 문서 URL로 영어 리딩을 한 문장씩 학습하고, 간단한 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 간격 복습, ~/.bookjakbookjak 아래에 클론된 사용자 설정 Git 저장소 커밋을 수행합니다. 영어 기사, URL, 문서, 리딩 지문, 번역 연습, 매일 영어공부, 학습 저장소 설정, 이전 영어 학습 복습 요청에 사용합니다.
 ---
 
 # English Reading Study
@@ -17,15 +17,15 @@ Before every session, make sure the user's study repo is configured, available l
 
 Use this internal storage root:
 
-`~/.english-reading-study`
+`~/.bookjakbookjak`
 
 Use this local checkout for the user's study data:
 
-`~/.english-reading-study/repo`
+`~/.bookjakbookjak/repo`
 
 Use this configuration file:
 
-`~/.english-reading-study/info.json`
+`~/.bookjakbookjak/info.json`
 
 If `info.json` is missing or invalid, ask the user for the Git repository URL to use for study records. Then create the internal storage root, clone the repository into `repo`, and write `info.json`.
 
@@ -34,7 +34,7 @@ If `info.json` is missing or invalid, ask the user for the Git repository URL to
 ```json
 {
   "repo_url": "https://github.com/user/english-study-data.git",
-  "repo_path": "/Users/name/.english-reading-study/repo",
+  "repo_path": "/Users/name/.bookjakbookjak/repo",
   "default_branch": "main",
   "created_at": "YYYY-MM-DDTHH:MM:SSZ",
   "updated_at": "YYYY-MM-DDTHH:MM:SSZ"
@@ -212,14 +212,14 @@ Always include:
 Before writing:
 
 ```bash
-cd ~/.english-reading-study/repo
+cd ~/.bookjakbookjak/repo
 git pull --ff-only
 ```
 
 After writing:
 
 ```bash
-cd ~/.english-reading-study/repo
+cd ~/.bookjakbookjak/repo
 git status --short
 git add daily reviews cards sources persistent
 git commit -m "Add English study record for YYYY-MM-DD"
