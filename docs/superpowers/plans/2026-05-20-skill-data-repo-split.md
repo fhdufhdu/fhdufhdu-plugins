@@ -577,7 +577,8 @@ Run:
 
 ```bash
 if ! command -v git-filter-repo >/dev/null 2>&1; then
-  python3 -m pip install --user git-filter-repo
+  python3 -m venv /tmp/book-jak-git-filter-repo-venv
+  /tmp/book-jak-git-filter-repo-venv/bin/python -m pip install git-filter-repo
 fi
 ```
 
@@ -588,17 +589,19 @@ Expected: install succeeds.
 Run:
 
 ```bash
-command -v git-filter-repo
-git filter-repo --version
+if command -v git-filter-repo >/dev/null 2>&1; then
+  git-filter-repo --version
+else
+  /tmp/book-jak-git-filter-repo-venv/bin/git-filter-repo --version
+fi
 ```
 
 Expected: both commands succeed.
 
-If the command is still not available because the user install path is not on `PATH`, find the script path and use that full path for Task 8:
+If the command was installed in the temporary virtual environment, use this full path for Task 8:
 
 ```bash
-python3 -m site --user-base
-find "$(python3 -m site --user-base)" -name git-filter-repo -type f
+/tmp/book-jak-git-filter-repo-venv/bin/git-filter-repo
 ```
 
 If installation fails, stop before rewriting history and report:
@@ -636,7 +639,11 @@ Run:
 
 ```bash
 cd /Users/fhdufhdu/project/book-jak-book-jak
-git filter-repo --force \
+FILTER_REPO_BIN="$(command -v git-filter-repo || true)"
+if [ -z "$FILTER_REPO_BIN" ]; then
+  FILTER_REPO_BIN="/tmp/book-jak-git-filter-repo-venv/bin/git-filter-repo"
+fi
+"$FILTER_REPO_BIN" --force \
   --path daily/ \
   --path reviews/ \
   --path cards/ \
@@ -731,27 +738,27 @@ git push --force-with-lease origin main
 ### Task 10: Remove Temporary `git-filter-repo` Installation
 
 **Files:**
-- Remove tool outside the repository if Task 7 installed it
+- Remove temporary virtual environment outside the repository if Task 7 created it
 
-- [ ] **Step 1: Uninstall the temporary Python package**
+- [ ] **Step 1: Remove the temporary virtual environment**
 
 Run:
 
 ```bash
-python3 -m pip uninstall -y git-filter-repo
+rm -rf /tmp/book-jak-git-filter-repo-venv
 ```
 
-Expected: uninstall succeeds if Task 7 installed the package. If the package was already installed before this task started, do not uninstall it.
+Expected: removal succeeds if Task 7 created the virtual environment. If `git-filter-repo` was already installed before this task started, do not remove anything else.
 
 - [ ] **Step 2: Confirm removal if it was installed temporarily**
 
 Run:
 
 ```bash
-command -v git-filter-repo || true
+test ! -e /tmp/book-jak-git-filter-repo-venv
 ```
 
-Expected: no path is printed if Task 7 installed it temporarily and uninstall removed it.
+Expected: no output on success.
 
 ---
 

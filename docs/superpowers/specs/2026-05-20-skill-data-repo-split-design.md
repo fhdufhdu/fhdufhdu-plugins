@@ -110,9 +110,9 @@ Before making repository changes, inspect both repositories for unexpected local
 
 If `git filter-repo` is unavailable, use the shortest safe alternative:
 
-1. Install `git-filter-repo` temporarily.
+1. Install `git-filter-repo` temporarily in a disposable virtual environment outside the repository.
 2. Run the history rewrite.
-3. Remove `git-filter-repo` after rewrite and verification.
+3. Remove the temporary virtual environment after rewrite and verification.
 4. If temporary installation fails, stop and report the blocker before rewriting history.
 
 If pushing fails because authentication is unavailable, keep local changes and report the exact command that still needs to be run.
