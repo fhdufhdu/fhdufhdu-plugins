@@ -1,0 +1,37 @@
+{
+  "name": "bookjakbookjak",
+  "version": "20260520222539",
+  "description": "Guide English reading study setup, sentence-level practice, review, and durable data repository records.",
+  "author": {
+    "name": "fhdufhdu",
+    "url": "https://github.com/fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "english",
+    "reading",
+    "study",
+    "review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "BookJakBookJak",
+    "shortDescription": "English reading setup, study, and review with durable records.",
+    "longDescription": "A Codex plugin for guided English reading practice. It separates repository setup from study sessions, asks the user to translate one sentence at a time, gives concise Korean feedback, and writes daily study records, review cards, source metadata, and persistent weak items to a separate user-configured data repository.",
+    "developerName": "fhdufhdu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+    "defaultPrompt": [
+      "BookJakBookJak 데이터 저장소를 설정해줘.",
+      "이 URL로 영어공부 시작해줘.",
+      "오늘 복습할 영어 학습 기록을 확인해줘."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

@@ -1,19 +1,19 @@
 ---
-name: english-reading-study
-description: 사용자 제공 문서 URL로 영어 리딩을 한 문장씩 학습하고, 간단한 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 간격 복습, ~/.bookjakbookjak 아래에 클론된 사용자 설정 Git 저장소 커밋을 수행합니다. 영어 기사, URL, 문서, 리딩 지문, 번역 연습, 매일 영어공부, 학습 저장소 설정, 이전 영어 학습 복습 요청에 사용합니다.
+name: study
+description: BookJakBookJak 영어 리딩 학습과 복습을 진행합니다. 사용자 제공 문서 URL을 문장 단위로 학습하고, 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 복습, ~/.bookjakbookjak/repo 커밋을 수행합니다. 설정이 없으면 bookjakbookjak:init 스킬을 먼저 사용합니다.
 ---
 
-# English Reading Study
+# BookJakBookJak Study
 
 ## Purpose
 
-Guide a daily English reading session. The user provides a document URL, translates one sentence at a time, receives brief correction-focused feedback, and gets durable records saved to the study repository.
+Guide a daily English reading session. The user provides a document URL, translates one sentence at a time, receives brief correction-focused feedback, and gets durable records saved to the configured study repository.
 
-Use the user-configured study repository as the source of truth for learning data. This repository only distributes the skill; it is not the default data store.
+Use the user-configured study repository as the source of truth for learning data. This plugin only distributes skills; it is not the default data store.
 
-Before every session, make sure the user's study repo is configured, available locally, and up to date. After every completed learning or review segment, update records, commit the changes, and push when credentials allow.
+Before every session, make sure the user's study repo is configured, available locally, and up to date. If it is not configured, use `bookjakbookjak:init` first and do not continue the study workflow until setup succeeds.
 
-## Repository Setup
+## Repository Setup Check
 
 Use this internal storage root:
 
@@ -27,25 +27,13 @@ Use this configuration file:
 
 `~/.bookjakbookjak/info.json`
 
-If `info.json` is missing or invalid, ask the user for the Git repository URL to use for study records. Then create the internal storage root, clone the repository into `repo`, and write `info.json`.
+Before reading or writing records:
 
-`info.json` must include:
-
-```json
-{
-  "repo_url": "https://github.com/user/english-study-data.git",
-  "repo_path": "/Users/name/.bookjakbookjak/repo",
-  "default_branch": "main",
-  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
-  "updated_at": "YYYY-MM-DDTHH:MM:SSZ"
-}
-```
-
-If `repo` already exists, verify it is a Git repository and that `git remote get-url origin` matches `info.json.repo_url`. If it does not match, stop and ask the user whether to switch repositories.
-
-If the repository URL cannot be cloned, tell the user the exact failure and ask them to confirm the URL, create the repository, or authenticate Git.
-
-If the repo exists and matches, pull with `--ff-only` before reading or writing records. If push fails because authentication is unavailable, keep the local commit and clearly tell the user.
+1. Verify `~/.bookjakbookjak/info.json` exists and is valid JSON.
+2. Verify `~/.bookjakbookjak/repo` exists and is a Git repository.
+3. Verify `git remote get-url origin` matches `info.json.repo_url`.
+4. If any check fails, tell the user that setup is required and use `bookjakbookjak:init`.
+5. If the repo exists and matches, pull with `--ff-only`.
 
 Create these directories when missing:
 
@@ -236,4 +224,4 @@ Do not overwrite unrelated user changes in the repository. If there are unexpect
 
 ## Stop Conditions
 
-If the document is too long, suggest a concrete stopping point such as 10-15 sentences or one section. If the page cannot be fetched, ask the user to paste the text or provide another URL. If the repository cannot be cloned or updated, continue the learning session in chat only after telling the user that persistence is blocked.
+If the document is too long, suggest a concrete stopping point such as 10-15 sentences or one section. If the page cannot be fetched, ask the user to paste the text or provide another URL. If the repository cannot be cloned or updated, use `bookjakbookjak:init` if setup is missing; otherwise continue the learning session in chat only after telling the user that persistence is blocked.

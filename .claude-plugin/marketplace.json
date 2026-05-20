@@ -1,21 +1,21 @@
 {
-  "name": "book-jak-book-jak",
+  "name": "fhdufhdu",
   "owner": {
     "name": "fhdufhdu"
   },
-  "description": "English reading study plugins and skills.",
+  "description": "fhdufhdu plugin marketplace.",
   "plugins": [
     {
-      "name": "english-reading-study",
-      "source": "./plugins/english-reading-study",
-      "displayName": "English Reading Study",
-      "description": "Sentence-by-sentence English reading practice with Korean feedback and durable review records.",
+      "name": "bookjakbookjak",
+      "source": "./plugins/bookjakbookjak",
+      "displayName": "BookJakBookJak",
+      "description": "English reading setup, sentence-by-sentence study, Korean feedback, and durable review records.",
       "version": "20260520222539",
       "author": {
         "name": "fhdufhdu"
       },
-      "homepage": "https://github.com/fhdufhdu/book-jak-book-jak",
-      "repository": "https://github.com/fhdufhdu/book-jak-book-jak",
+      "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
       "license": "MIT",
       "category": "productivity",
       "tags": [

@@ -1,15 +1,19 @@
-# 영어 리딩 학습 스킬
+# fhdufhdu Plugins
 
-영어 문서를 문장 단위로 읽고 해석하면서 학습 기록과 복습 기록을 남기는 개인용 Codex/Claude 스킬입니다.
+Codex/Claude용 개인 플러그인 마켓플레이스입니다.
 
-이 저장소는 스킬과 플러그인 배포용 저장소입니다. 실제 학습 데이터는 별도 저장소에 저장합니다.
+현재 포함된 플러그인:
 
-- 스킬/플러그인 저장소: `https://github.com/fhdufhdu/book-jak-book-jak`
+- `bookjakbookjak`: 영어 리딩 학습 데이터 저장소 설정, 문장별 학습, 복습 기록 관리
+
+실제 학습 데이터는 별도 저장소에 저장합니다.
+
+- 플러그인 마켓플레이스 저장소: `https://github.com/fhdufhdu/fhdufhdu-plugins`
 - 학습 데이터 저장소: `https://github.com/fhdufhdu/book-jak-book-jak-data`
 
-## 설치 방법
+## Codex 설치
 
-Git clone으로 스킬 폴더에 직접 복사하지 말고, Codex 앱 또는 CLI, Claude Code의 플러그인/마켓플레이스 등록 기능을 사용하세요.
+Git clone으로 직접 복사하지 말고 Codex 앱 또는 CLI의 플러그인/마켓플레이스 등록 기능을 사용하세요.
 
 ### Codex 앱에서 등록
 
@@ -18,79 +22,73 @@ Git clone으로 스킬 폴더에 직접 복사하지 말고, Codex 앱 또는 CL
 3. source로 아래 저장소를 입력합니다.
 
 ```text
-fhdufhdu/book-jak-book-jak
+fhdufhdu/fhdufhdu-plugins
 ```
 
-4. `English Reading Study` 또는 `english-reading-study` 플러그인/스킬을 활성화합니다.
+4. `bookjakbookjak` 플러그인을 설치하고 활성화합니다.
 
 ### Codex CLI에서 등록
 
-터미널에서 아래 명령을 실행합니다.
-
 ```bash
-codex plugin marketplace add fhdufhdu/book-jak-book-jak
+codex plugin marketplace add fhdufhdu/fhdufhdu-plugins
+codex plugin add bookjakbookjak@fhdufhdu
 ```
 
 마켓플레이스를 갱신하려면 아래 명령을 사용합니다.
 
 ```bash
-codex plugin marketplace upgrade book-jak-book-jak
+codex plugin marketplace upgrade fhdufhdu
 ```
 
-Codex CLI 세션 안에서 플러그인/마켓플레이스 명령을 사용할 수도 있습니다.
-
-### Claude Code에서 등록
+## Claude Code 설치
 
 터미널에서 아래 명령을 실행합니다.
 
 ```bash
-claude plugin marketplace add fhdufhdu/book-jak-book-jak
+claude plugin marketplace add fhdufhdu/fhdufhdu-plugins
 ```
 
 Claude Code 세션 안에서는 아래 명령을 사용할 수 있습니다.
 
 ```text
-/plugin marketplace add fhdufhdu/book-jak-book-jak
+/plugin marketplace add fhdufhdu/fhdufhdu-plugins
 ```
 
 마켓플레이스 등록 후 플러그인을 설치합니다.
 
 ```text
-/plugin install english-reading-study@book-jak-book-jak
+/plugin install bookjakbookjak@fhdufhdu
 ```
 
-## 스킬 위치
+## BookJakBookJak 스킬
 
 ```text
-plugins/english-reading-study/skills/english-reading-study
+bookjakbookjak:init
+bookjakbookjak:study
 ```
 
-포함 파일:
-
-- `SKILL.md`
-- `references/record-schema.md`
+- `init`: `~/.bookjakbookjak/info.json`을 만들고 데이터 Git 저장소를 `~/.bookjakbookjak/repo`에 설정합니다.
+- `study`: 영어 리딩 학습과 복습을 진행합니다. 저장소 설정이 없으면 먼저 `bookjakbookjak:init`을 사용합니다.
 
 ## 내부 저장 위치
 
-스킬은 실행 설정을 아래 파일에 저장합니다.
+설정 파일:
 
 ```text
 ~/.bookjakbookjak/info.json
 ```
 
-사용자의 실제 학습 데이터 저장소는 아래 위치에 클론합니다.
+데이터 저장소 체크아웃:
 
 ```text
 ~/.bookjakbookjak/repo
 ```
 
-처음 사용할 때 스킬은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이 프로젝트의 기본 데이터 저장소는 아래 URL입니다.
+처음 사용할 때 `bookjakbookjak:init`은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이 프로젝트의 기본 데이터 저장소는 아래 URL입니다.
 
 ```text
 https://github.com/fhdufhdu/book-jak-book-jak-data.git
 ```
-
-이후 스킬은 해당 저장소를 클론하고, 저장소 URL과 로컬 클론 경로를 `info.json`에 저장합니다.
 
 ## 학습 데이터 구조
 
@@ -103,9 +101,3 @@ https://github.com/fhdufhdu/book-jak-book-jak-data.git
 - `persistent/`: 계속 외우지 못하는 장기 미숙 항목
 
 학습 기록, 복습 기록, 문서 설명은 한국어로 작성합니다. 경로명, YAML frontmatter 키, JSON 키는 도구 호환성을 위해 영어를 유지합니다.
-
-## 학습 시작 예시
-
-```text
-이 URL로 영어공부 시작해줘: https://example.com/article
-```

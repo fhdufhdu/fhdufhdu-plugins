@@ -1,14 +1,14 @@
 {
-  "name": "book-jak-book-jak",
+  "name": "fhdufhdu",
   "interface": {
-    "displayName": "Book Jak Book Jak"
+    "displayName": "fhdufhdu"
   },
   "plugins": [
     {
-      "name": "english-reading-study",
+      "name": "bookjakbookjak",
       "source": {
         "source": "local",
-        "path": "./plugins/english-reading-study"
+        "path": "./plugins/bookjakbookjak"
       },
       "policy": {
         "installation": "AVAILABLE",
