@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "english-reading-study",
-      "source": "./",
+      "source": "./plugins/english-reading-study",
       "displayName": "English Reading Study",
       "description": "Sentence-by-sentence English reading practice with Korean feedback and durable review records.",
       "version": "1.0.0",

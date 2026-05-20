@@ -62,7 +62,7 @@ Claude Code 세션 안에서는 아래 명령을 사용할 수 있습니다.
 ## 스킬 위치
 
 ```text
-skills/english-reading-study
+plugins/english-reading-study/skills/english-reading-study
 ```
 
 포함 파일:
