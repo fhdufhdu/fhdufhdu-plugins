@@ -1,0 +1,71 @@
+name: Update plugin version
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-version:
+    if: ${{ !contains(github.event.head_commit.message, '[skip actions]') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set timestamp version
+        env:
+          TZ: Asia/Seoul
+        run: |
+          version="$(date +'%Y%m%d%H%M%S')"
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+          export VERSION="$version"
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          version = os.environ["VERSION"]
+
+          plugin_manifests = [
+              Path("plugins/english-reading-study/.codex-plugin/plugin.json"),
+              Path("plugins/english-reading-study/.claude-plugin/plugin.json"),
+          ]
+
+          for path in plugin_manifests:
+              data = json.loads(path.read_text())
+              data["version"] = version
+              path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+
+          marketplace = Path(".claude-plugin/marketplace.json")
+          data = json.loads(marketplace.read_text())
+          for plugin in data["plugins"]:
+              if plugin["name"] == "english-reading-study":
+                  plugin["version"] = version
+                  break
+          else:
+              raise SystemExit("english-reading-study plugin entry not found")
+          marketplace.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+          PY
+
+      - name: Commit version update
+        run: |
+          if git diff --quiet; then
+            echo "Plugin versions already match $VERSION."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            plugins/english-reading-study/.codex-plugin/plugin.json \
+            plugins/english-reading-study/.claude-plugin/plugin.json \
+            .claude-plugin/marketplace.json
+          git commit -m "chore: update plugin version to $VERSION [skip actions]"
+          git push
