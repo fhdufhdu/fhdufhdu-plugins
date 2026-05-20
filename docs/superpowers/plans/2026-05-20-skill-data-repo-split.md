@@ -6,7 +6,7 @@
 
 **Architecture:** The data repository receives the current study-data snapshot as its first commit. The skill repository gains Codex and Claude Code plugin/marketplace metadata plus README installation instructions, then rewrites Git history to remove all data paths. Distribution uses Codex app/CLI and Claude Code marketplace registration, not manual repository cloning into skill directories.
 
-**Tech Stack:** Git, `git filter-repo`, Codex CLI plugin marketplace commands, Claude Code plugin metadata, JSON manifests, Markdown documentation.
+**Tech Stack:** Git, temporarily installed `git-filter-repo`, Codex CLI plugin marketplace commands, Claude Code plugin metadata, JSON manifests, Markdown documentation.
 
 ---
 
@@ -554,12 +554,36 @@ Usage: codex plugin marketplace add [OPTIONS] <SOURCE>
 
 ---
 
-### Task 7: Rewrite Skill Repository History to Remove Data
+### Task 7: Install `git-filter-repo` Temporarily
 
 **Files:**
-- Rewrite Git history in: `/Users/fhdufhdu/project/book-jak-book-jak`
+- Install tool outside the repository
+- Record cleanup command for Task 10
 
-- [ ] **Step 1: Confirm `git filter-repo` is available**
+- [ ] **Step 1: Check whether `git-filter-repo` is already available**
+
+Run:
+
+```bash
+command -v git-filter-repo
+git filter-repo --version
+```
+
+Expected: both commands succeed if already installed. If they fail, continue to Step 2.
+
+- [ ] **Step 2: Install `git-filter-repo` only if missing**
+
+Run:
+
+```bash
+if ! command -v git-filter-repo >/dev/null 2>&1; then
+  python3 -m pip install --user git-filter-repo
+fi
+```
+
+Expected: install succeeds.
+
+- [ ] **Step 3: Confirm the installed command is usable**
 
 Run:
 
@@ -570,13 +594,27 @@ git filter-repo --version
 
 Expected: both commands succeed.
 
-If `git-filter-repo` is not available, stop before rewriting history and report:
+If the command is still not available because the user install path is not on `PATH`, find the script path and use that full path for Task 8:
+
+```bash
+python3 -m site --user-base
+find "$(python3 -m site --user-base)" -name git-filter-repo -type f
+```
+
+If installation fails, stop before rewriting history and report:
 
 ```text
 git-filter-repo is required before rewriting history. Install it, then rerun Task 7.
 ```
 
-- [ ] **Step 2: Save current remote URL before rewrite**
+---
+
+### Task 8: Rewrite Skill Repository History to Remove Data
+
+**Files:**
+- Rewrite Git history in: `/Users/fhdufhdu/project/book-jak-book-jak`
+
+- [ ] **Step 1: Save current remote URL before rewrite**
 
 Run:
 
@@ -592,7 +630,7 @@ Expected:
 https://github.com/fhdufhdu/book-jak-book-jak.git
 ```
 
-- [ ] **Step 3: Rewrite history**
+- [ ] **Step 2: Rewrite history**
 
 Run:
 
@@ -609,7 +647,7 @@ git filter-repo --force \
 
 Expected: `git filter-repo` completes successfully and rewrites commits.
 
-- [ ] **Step 4: Restore origin remote if filter-repo removed it**
+- [ ] **Step 3: Restore origin remote if filter-repo removed it**
 
 Run:
 
@@ -623,7 +661,7 @@ git remote -v
 
 Expected: origin points to `https://github.com/fhdufhdu/book-jak-book-jak.git`.
 
-- [ ] **Step 5: Verify data paths are absent from history**
+- [ ] **Step 4: Verify data paths are absent from history**
 
 Run:
 
@@ -634,7 +672,7 @@ git log --all -- daily reviews cards sources persistent
 
 Expected: no commits are printed.
 
-- [ ] **Step 6: Verify data paths are absent from working tree**
+- [ ] **Step 5: Verify data paths are absent from working tree**
 
 Run:
 
@@ -651,7 +689,7 @@ Expected: no output on success.
 
 ---
 
-### Task 8: Push Repositories
+### Task 9: Push Repositories
 
 **Files:**
 - Push data repo: `/Users/fhdufhdu/project/book-jak-book-jak-data`
@@ -690,7 +728,34 @@ git push --force-with-lease origin main
 
 ---
 
-### Task 9: Final Smoke Checks
+### Task 10: Remove Temporary `git-filter-repo` Installation
+
+**Files:**
+- Remove tool outside the repository if Task 7 installed it
+
+- [ ] **Step 1: Uninstall the temporary Python package**
+
+Run:
+
+```bash
+python3 -m pip uninstall -y git-filter-repo
+```
+
+Expected: uninstall succeeds if Task 7 installed the package. If the package was already installed before this task started, do not uninstall it.
+
+- [ ] **Step 2: Confirm removal if it was installed temporarily**
+
+Run:
+
+```bash
+command -v git-filter-repo || true
+```
+
+Expected: no path is printed if Task 7 installed it temporarily and uninstall removed it.
+
+---
+
+### Task 11: Final Smoke Checks
 
 **Files:**
 - Inspect: both repositories
