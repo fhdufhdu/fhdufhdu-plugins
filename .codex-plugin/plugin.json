@@ -1,0 +1,37 @@
+{
+  "name": "english-reading-study",
+  "version": "1.0.0",
+  "description": "Guide English reading sessions, capture sentence-level feedback, and save study records to a user-configured data repository.",
+  "author": {
+    "name": "fhdufhdu",
+    "url": "https://github.com/fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/book-jak-book-jak",
+  "repository": "https://github.com/fhdufhdu/book-jak-book-jak",
+  "license": "MIT",
+  "keywords": [
+    "english",
+    "reading",
+    "study",
+    "review"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "English Reading Study",
+    "shortDescription": "Sentence-by-sentence English reading practice with durable review records.",
+    "longDescription": "A Codex skill for guided English reading practice. It asks the user to translate one sentence at a time, gives concise Korean feedback, and writes daily study records, review cards, source metadata, and persistent weak items to a separate user-configured data repository.",
+    "developerName": "fhdufhdu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/fhdufhdu/book-jak-book-jak",
+    "defaultPrompt": [
+      "이 URL로 영어공부 시작해줘.",
+      "오늘 복습할 영어 학습 기록을 확인해줘.",
+      "영어 리딩 학습 데이터 저장소를 설정해줘."
+    ],
+    "brandColor": "#2563EB"
+  }
+}

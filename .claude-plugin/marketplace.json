@@ -1,0 +1,29 @@
+{
+  "name": "book-jak-book-jak",
+  "owner": {
+    "name": "fhdufhdu"
+  },
+  "description": "English reading study plugins and skills.",
+  "plugins": [
+    {
+      "name": "english-reading-study",
+      "source": "./",
+      "displayName": "English Reading Study",
+      "description": "Sentence-by-sentence English reading practice with Korean feedback and durable review records.",
+      "version": "1.0.0",
+      "author": {
+        "name": "fhdufhdu"
+      },
+      "homepage": "https://github.com/fhdufhdu/book-jak-book-jak",
+      "repository": "https://github.com/fhdufhdu/book-jak-book-jak",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "english",
+        "reading",
+        "study",
+        "review"
+      ]
+    }
+  ]
+}

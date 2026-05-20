@@ -1,0 +1,20 @@
+{
+  "name": "book-jak-book-jak",
+  "interface": {
+    "displayName": "Book Jak Book Jak"
+  },
+  "plugins": [
+    {
+      "name": "english-reading-study",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

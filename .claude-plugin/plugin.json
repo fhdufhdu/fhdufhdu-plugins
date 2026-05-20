@@ -1,0 +1,11 @@
+{
+  "name": "english-reading-study",
+  "description": "Guide English reading sessions, capture sentence-level feedback, and save study records to a user-configured data repository.",
+  "version": "1.0.0",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/book-jak-book-jak",
+  "repository": "https://github.com/fhdufhdu/book-jak-book-jak",
+  "license": "MIT"
+}

@@ -2,16 +2,62 @@
 
 영어 문서를 문장 단위로 읽고 해석하면서 학습 기록과 복습 기록을 남기는 개인용 Codex/Claude 스킬입니다.
 
+이 저장소는 스킬과 플러그인 배포용 저장소입니다. 실제 학습 데이터는 별도 저장소에 저장합니다.
+
+- 스킬/플러그인 저장소: `https://github.com/fhdufhdu/book-jak-book-jak`
+- 학습 데이터 저장소: `https://github.com/fhdufhdu/book-jak-book-jak-data`
+
 ## 설치 방법
 
-Codex 또는 Claude에게 아래처럼 요청하면 됩니다.
+Git clone으로 스킬 폴더에 직접 복사하지 말고, Codex 앱 또는 CLI, Claude Code의 플러그인/마켓플레이스 등록 기능을 사용하세요.
+
+### Codex 앱에서 등록
+
+1. Codex 앱을 엽니다.
+2. Plugins 화면에서 marketplace 또는 plugin source 추가 흐름을 엽니다.
+3. source로 아래 저장소를 입력합니다.
 
 ```text
-https://github.com/fhdufhdu/eng-reading-study/tree/main/skills/english-reading-study
-여기 있는 영어 리딩 학습 스킬 설치해줘.
+fhdufhdu/book-jak-book-jak
 ```
 
-스킬 설치 후 Codex는 재시작해야 새 스킬을 인식할 수 있습니다.
+4. `English Reading Study` 또는 `english-reading-study` 플러그인/스킬을 활성화합니다.
+
+### Codex CLI에서 등록
+
+터미널에서 아래 명령을 실행합니다.
+
+```bash
+codex plugin marketplace add fhdufhdu/book-jak-book-jak
+```
+
+마켓플레이스를 갱신하려면 아래 명령을 사용합니다.
+
+```bash
+codex plugin marketplace upgrade book-jak-book-jak
+```
+
+Codex CLI 세션 안에서 플러그인/마켓플레이스 명령을 사용할 수도 있습니다.
+
+### Claude Code에서 등록
+
+터미널에서 아래 명령을 실행합니다.
+
+```bash
+claude plugin marketplace add fhdufhdu/book-jak-book-jak
+```
+
+Claude Code 세션 안에서는 아래 명령을 사용할 수 있습니다.
+
+```text
+/plugin marketplace add fhdufhdu/book-jak-book-jak
+```
+
+마켓플레이스 등록 후 플러그인을 설치합니다.
+
+```text
+/plugin install english-reading-study@book-jak-book-jak
+```
 
 ## 스킬 위치
 
@@ -38,7 +84,13 @@ skills/english-reading-study
 ~/.english-reading-study/repo
 ```
 
-처음 사용할 때 스킬은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이후 해당 저장소를 클론하고, 저장소 URL과 로컬 클론 경로를 `info.json`에 저장합니다.
+처음 사용할 때 스킬은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이 프로젝트의 기본 데이터 저장소는 아래 URL입니다.
+
+```text
+https://github.com/fhdufhdu/book-jak-book-jak-data.git
+```
+
+이후 스킬은 해당 저장소를 클론하고, 저장소 URL과 로컬 클론 경로를 `info.json`에 저장합니다.
 
 ## 학습 데이터 구조
 
