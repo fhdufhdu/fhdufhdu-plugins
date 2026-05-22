@@ -10,7 +10,7 @@
       "source": "./plugins/bookjakbookjak",
       "displayName": "BookJakBookJak",
       "description": "English reading setup, sentence-by-sentence study, Korean feedback, and durable review records.",
-      "version": "20260521084857",
+      "version": "20260522090029",
       "author": {
         "name": "fhdufhdu"
       },
@@ -30,7 +30,7 @@
       "source": "./plugins/humanities-wiki",
       "displayName": "Humanities Wiki",
       "description": "Humanities videos, essays, meaningful quotes, reflections, and LLM-maintained personal wiki records.",
-      "version": "0.1.0",
+      "version": "20260522090029",
       "author": {
         "name": "fhdufhdu"
       },

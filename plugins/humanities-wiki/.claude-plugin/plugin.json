@@ -1,7 +1,7 @@
 {
   "name": "humanities-wiki",
   "description": "Capture humanities videos, essays, meaningful quotes, and reflections into a persistent LLM-maintained wiki.",
-  "version": "0.1.0",
+  "version": "20260522090029",
   "author": {
     "name": "fhdufhdu"
   },
