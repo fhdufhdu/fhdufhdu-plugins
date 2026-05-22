@@ -1,0 +1,37 @@
+{
+  "name": "humanities-wiki",
+  "version": "0.1.0",
+  "description": "Capture humanities videos, essays, meaningful quotes, and reflections into a persistent LLM-maintained wiki.",
+  "author": {
+    "name": "fhdufhdu",
+    "url": "https://github.com/fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "humanities",
+    "wiki",
+    "reflection",
+    "knowledge-base"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Humanities Wiki",
+    "shortDescription": "Humanities source capture and LLM-maintained personal wiki.",
+    "longDescription": "A Codex plugin for collecting humanities videos, essays, memorable passages, and personal reflections. It follows Andrej Karpathy's LLM wiki pattern: raw sources remain immutable, while the agent incrementally maintains interlinked markdown wiki pages, index.md, and log.md in a separate user-configured Git repository.",
+    "developerName": "fhdufhdu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+    "defaultPrompt": [
+      "Humanities Wiki 데이터 저장소를 설정해줘.",
+      "이 인문학 에세이 링크를 내 wiki에 정리해줘.",
+      "내가 의미 깊게 본 문구들을 기록하고 관련 wiki 페이지를 갱신해줘."
+    ],
+    "brandColor": "#7C3AED"
+  }
+}

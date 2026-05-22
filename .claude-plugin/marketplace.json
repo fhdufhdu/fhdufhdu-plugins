@@ -24,6 +24,26 @@
         "study",
         "review"
       ]
+    },
+    {
+      "name": "humanities-wiki",
+      "source": "./plugins/humanities-wiki",
+      "displayName": "Humanities Wiki",
+      "description": "Humanities videos, essays, meaningful quotes, reflections, and LLM-maintained personal wiki records.",
+      "version": "0.1.0",
+      "author": {
+        "name": "fhdufhdu"
+      },
+      "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "humanities",
+        "wiki",
+        "reflection",
+        "knowledge-base"
+      ]
     }
   ]
 }

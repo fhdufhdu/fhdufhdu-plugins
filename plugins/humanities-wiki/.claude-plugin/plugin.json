@@ -1,0 +1,11 @@
+{
+  "name": "humanities-wiki",
+  "description": "Capture humanities videos, essays, meaningful quotes, and reflections into a persistent LLM-maintained wiki.",
+  "version": "0.1.0",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT"
+}

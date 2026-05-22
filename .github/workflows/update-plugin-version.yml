@@ -33,9 +33,18 @@ jobs:
 
           version = os.environ["VERSION"]
 
+          plugin_names = [
+              "bookjakbookjak",
+              "humanities-wiki",
+          ]
+
           plugin_manifests = [
-              Path("plugins/bookjakbookjak/.codex-plugin/plugin.json"),
-              Path("plugins/bookjakbookjak/.claude-plugin/plugin.json"),
+              path
+              for name in plugin_names
+              for path in (
+                  Path(f"plugins/{name}/.codex-plugin/plugin.json"),
+                  Path(f"plugins/{name}/.claude-plugin/plugin.json"),
+              )
           ]
 
           for path in plugin_manifests:
@@ -45,12 +54,13 @@ jobs:
 
           marketplace = Path(".claude-plugin/marketplace.json")
           data = json.loads(marketplace.read_text())
+          missing = set(plugin_names)
           for plugin in data["plugins"]:
-              if plugin["name"] == "bookjakbookjak":
+              if plugin["name"] in missing:
                   plugin["version"] = version
-                  break
-          else:
-              raise SystemExit("bookjakbookjak plugin entry not found")
+                  missing.remove(plugin["name"])
+          if missing:
+              raise SystemExit(f"plugin entries not found: {sorted(missing)}")
           marketplace.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
           PY
 
@@ -66,6 +76,8 @@ jobs:
           git add \
             plugins/bookjakbookjak/.codex-plugin/plugin.json \
             plugins/bookjakbookjak/.claude-plugin/plugin.json \
+            plugins/humanities-wiki/.codex-plugin/plugin.json \
+            plugins/humanities-wiki/.claude-plugin/plugin.json \
             .claude-plugin/marketplace.json
           git commit -m "chore: update plugin version to $VERSION [skip actions]"
           git push
