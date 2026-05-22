@@ -64,6 +64,7 @@ Read `references/wiki-schema.md` before creating or modifying wiki files.
    - Default: do not save full copyrighted material. Store summaries, metadata, user-provided phrases, and short necessary excerpts only.
    - If the user explicitly asks to store the full original text, transcript, or subtitles, warn them first: if the data repository is public or later shared, saving copyrighted full text may create copyright risk. Ask for confirmation before writing full text.
    - If confirmed, save full text under `raw/fulltext/YYYY/YYYY-MM-DD-slug.md` and mark the related source record with `fulltext_saved: true`, `fulltext_path`, and `copyright_risk_note`.
+   - When saving full text, also write a full-text-based organization in the same file: overall summary, section-by-section summary for long text, key claims, important passages, concepts to connect to the wiki, and questions raised by the source.
    - If the user declines or is unsure, keep `fulltext_saved: false` and store only summaries and short excerpts.
 5. Write or update a source record under `sources/YYYY/YYYY-MM-DD-slug.md`.
 6. Write quote records under `quotes/YYYY/YYYY-MM-DD-slug.md`, preserving the user's meaningful phrases and recording why they mattered.
@@ -73,6 +74,7 @@ Read `references/wiki-schema.md` before creating or modifying wiki files.
    - add cross-links using standard markdown wiki links or relative markdown links consistently with existing files
    - preserve tensions and contradictions instead of forcing a single clean thesis
    - note how the new source changes, deepens, or challenges prior pages
+   - if full text was saved, use the full-text-based organization as the detailed basis for wiki updates while keeping the source record concise
 9. Update `index.md` with each touched page, a one-line Korean summary, and source count when useful.
 10. Append an entry to `log.md` using this prefix:
 
