@@ -60,12 +60,14 @@ Read `references/wiki-schema.md` before creating or modifying wiki files.
 1. Accept one or more user-provided URLs for humanities videos, essays, talks, interviews, poems, lectures, or related materials.
 2. Ask the user for meaningful phrases or passages if they have not provided them yet. If the user already provided phrases, do not ask again.
 3. Fetch the source when possible and identify title, creator, publication platform, date, language, medium, and URL.
-4. Decide raw text storage policy before saving full source text, transcript, or subtitles:
-   - Default: do not save full copyrighted material. Store summaries, metadata, user-provided phrases, and short necessary excerpts only.
-   - If the user explicitly asks to store the full original text, transcript, or subtitles, warn them first: if the data repository is public or later shared, saving copyrighted full text may create copyright risk. Ask for confirmation before writing full text.
-   - If confirmed, save full text under `raw/fulltext/YYYY/YYYY-MM-DD-slug.md` and mark the related source record with `fulltext_saved: true`, `fulltext_path`, and `copyright_risk_note`.
+4. Before saving records, offer the user a clear raw text storage choice:
+   - Option A, recommended: save summaries, metadata, user-provided phrases, and short necessary excerpts only.
+   - Option B: save the full original text, transcript, or subtitles under `raw/fulltext/`.
+   - Present the copyright warning with Option B: if the data repository is public or later shared, saving copyrighted full text may create copyright risk.
+   - Do not save full text unless the user chooses Option B after seeing the warning.
+   - If the user chooses Option B, save full text under `raw/fulltext/YYYY/YYYY-MM-DD-slug.md` and mark the related source record with `fulltext_saved: true`, `fulltext_path`, and `copyright_risk_note`.
    - When saving full text, also write a full-text-based organization in the same file: overall summary, section-by-section summary for long text, key claims, important passages, concepts to connect to the wiki, and questions raised by the source.
-   - If the user declines or is unsure, keep `fulltext_saved: false` and store only summaries and short excerpts.
+   - If the user chooses Option A, declines, or is unsure, keep `fulltext_saved: false` and store only summaries and short excerpts.
 5. Write or update a source record under `sources/YYYY/YYYY-MM-DD-slug.md`.
 6. Write quote records under `quotes/YYYY/YYYY-MM-DD-slug.md`, preserving the user's meaningful phrases and recording why they mattered.
 7. Write a reflection entry under `reflections/YYYY/YYYY-MM-DD-slug.md` when the user expresses personal change, aspiration, discomfort, contradiction, or a new question.
