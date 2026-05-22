@@ -5,6 +5,7 @@
 ## 핵심 계층
 
 - `raw/`: 사용자가 제공한 원천 자료의 변경하지 않는 메타데이터, 짧은 발췌, transcript 위치 메모
+- `raw/fulltext/`: 사용자가 저작권 위험 경고를 확인하고 명시적으로 선택한 경우에만 저장하는 원문, transcript, subtitles
 - `sources/`: 링크별 요약, 맥락, 저작권 메모, 관련 wiki 페이지 목록
 - `quotes/`: 사용자가 의미 깊게 느낀 문구와 그 이유
 - `reflections/`: 개인 성찰, 변화의 방향, 남은 질문
@@ -51,7 +52,10 @@ creator: "창작자 또는 발행자"
 medium: essay
 language: ko
 status: captured
-copyright_note: "전체 원문은 저장하지 않고, 요약과 필요한 짧은 발췌만 보관한다."
+fulltext_saved: false
+fulltext_path: ""
+copyright_note: "기본값은 전체 원문을 저장하지 않고, 요약과 필요한 짧은 발췌만 보관한다."
+copyright_risk_note: ""
 ---
 
 # 자료 제목
@@ -82,7 +86,38 @@ copyright_note: "전체 원문은 저장하지 않고, 요약과 필요한 짧�
 
 ## 저작권 메모
 
-전체 원문은 저장하지 않는다. 사용자가 직접 제공했거나 분석에 필요한 짧은 문구만 저장한다.
+기본값은 전체 원문을 저장하지 않는 것이다. 사용자가 명시적으로 원문/자막 저장을 선택한 경우, 저장소가 외부 공개되거나 공유될 때 저작권 문제가 생길 수 있음을 기록한다.
+```
+
+## Full Text Record
+
+경로:
+
+`raw/fulltext/YYYY/YYYY-MM-DD-slug.md`
+
+이 파일은 사용자가 저작권 위험 경고를 확인하고 원문, transcript, subtitles 저장을 명시적으로 선택한 경우에만 만든다. 공개 저장소에 저장하면 저작권 문제가 생길 수 있다는 경고를 source record에도 남긴다.
+
+템플릿:
+
+```markdown
+---
+type: fulltext
+date: YYYY-MM-DD
+source: "sources/YYYY/YYYY-MM-DD-slug.md"
+url: "https://example.com"
+storage_confirmed_by_user: true
+copyright_risk_note: "저장소가 public이거나 외부 공유될 경우 원문/자막 저장은 저작권 문제가 될 수 있다."
+---
+
+# 원문 또는 자막 - 자료 제목
+
+## 저장 경고
+
+이 파일은 사용자의 명시적 요청으로 저장했다. 저장소 공개 범위와 저작권 위험을 주기적으로 확인한다.
+
+## 본문
+
+원문, transcript, subtitles.
 ```
 
 ## Quote Record

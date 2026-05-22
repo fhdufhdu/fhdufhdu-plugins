@@ -1,7 +1,7 @@
 {
   "name": "humanities-wiki",
   "version": "20260522090029",
-  "description": "Capture humanities videos, essays, meaningful quotes, and reflections into a persistent LLM-maintained wiki.",
+  "description": "Capture humanities sources, organize personal thoughts, answer from prior records, and maintain a persistent LLM wiki.",
   "author": {
     "name": "fhdufhdu",
     "url": "https://github.com/fhdufhdu"
@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "Humanities Wiki",
     "shortDescription": "Humanities source capture and LLM-maintained personal wiki.",
-    "longDescription": "A Codex plugin for collecting humanities videos, essays, memorable passages, and personal reflections. It follows Andrej Karpathy's LLM wiki pattern: raw sources remain immutable, while the agent incrementally maintains interlinked markdown wiki pages, index.md, and log.md in a separate user-configured Git repository.",
+    "longDescription": "A Codex plugin for collecting humanities videos, essays, memorable passages, messy personal thoughts, and reflective questions. It follows Andrej Karpathy's LLM wiki pattern: source records and optional user-confirmed full text are kept separately, while the agent incrementally maintains interlinked markdown wiki pages, index.md, and log.md in a separate user-configured Git repository.",
     "developerName": "fhdufhdu",
     "category": "Productivity",
     "capabilities": [
@@ -30,7 +30,8 @@
     "defaultPrompt": [
       "Humanities Wiki 데이터 저장소를 설정해줘.",
       "이 인문학 에세이 링크를 내 wiki에 정리해줘.",
-      "내가 의미 깊게 본 문구들을 기록하고 관련 wiki 페이지를 갱신해줘."
+      "내가 의미 깊게 본 문구들을 기록하고 관련 wiki 페이지를 갱신해줘.",
+      "내 생각을 정리하고 이전 기록과 연결해줘."
     ],
     "brandColor": "#7C3AED"
   }

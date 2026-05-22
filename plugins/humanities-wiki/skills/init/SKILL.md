@@ -59,6 +59,7 @@ Do not store document URLs, source records, quotes, or reflections in `info.json
 
 ```text
 raw/
+raw/fulltext/
 sources/
 quotes/
 reflections/
@@ -82,7 +83,8 @@ When creating `AGENTS.md` in the data repository, include these operating rules:
 - Record contradictions, tensions, and changed interpretations instead of smoothing them away.
 - Keep `index.md` content-oriented and `log.md` chronological.
 - Write records in Korean while keeping path names and frontmatter keys in English.
-- Do not save full copyrighted source text. Save links, metadata, summaries, short necessary excerpts, and user-provided meaningful phrases.
+- By default, do not save full copyrighted source text. Save links, metadata, summaries, short necessary excerpts, and user-provided meaningful phrases.
+- Save full original text, transcripts, or subtitles under `raw/fulltext/` only after the user explicitly confirms they understand that public or shared repositories may create copyright risk.
 
 ## Completion
 

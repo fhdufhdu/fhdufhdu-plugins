@@ -25,10 +25,12 @@ Claude Code 세션:
 ```text
 humanities-wiki:init
 humanities-wiki:capture
+humanities-wiki:think
 ```
 
 - `init`: `~/.humanities-wiki/info.json`을 만들고 기록용 Git 저장소를 `~/.humanities-wiki/repo`에 설정합니다.
 - `capture`: 사용자가 제공한 인문학 영상/에세이 링크와 의미 깊었던 문구를 정리하고, LLM wiki를 갱신합니다. 설정이 없으면 먼저 `humanities-wiki:init`을 사용합니다.
+- `think`: 사용자가 자유롭게 쏟아낸 생각을 정리하고, 이전 기록을 바탕으로 질문에 답하며, 오래 남길 만한 생각을 wiki와 reflections에 연결합니다.
 
 ## 내부 저장 위치
 
@@ -49,6 +51,7 @@ humanities-wiki:capture
 사용자가 지정한 저장소 안에는 아래 구조로 기록합니다.
 
 - `raw/`: 변경하지 않는 원천 자료 메타데이터와 짧은 발췌
+- `raw/fulltext/`: 사용자가 명시적으로 선택한 경우에만 저장하는 원문 또는 자막
 - `sources/`: 링크별 요약, 맥락, 저작권 메모
 - `quotes/`: 의미 깊었던 문구와 사용자 해석
 - `reflections/`: 개인 성찰과 변화의 방향

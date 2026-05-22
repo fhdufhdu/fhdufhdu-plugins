@@ -1,6 +1,6 @@
 {
   "name": "humanities-wiki",
-  "description": "Capture humanities videos, essays, meaningful quotes, and reflections into a persistent LLM-maintained wiki.",
+  "description": "Capture humanities sources, organize personal thoughts, answer from prior records, and maintain a persistent LLM wiki.",
   "version": "20260522090029",
   "author": {
     "name": "fhdufhdu"
