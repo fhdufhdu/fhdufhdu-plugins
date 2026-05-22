@@ -1,7 +1,7 @@
 {
   "name": "humanities-wiki",
   "description": "Capture humanities sources, organize personal thoughts, answer from prior records, and maintain a persistent LLM wiki.",
-  "version": "20260522095003",
+  "version": "20260522120812",
   "author": {
     "name": "fhdufhdu"
   },
