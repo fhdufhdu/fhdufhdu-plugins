@@ -25,7 +25,7 @@ bookjakbookjak:init
 bookjakbookjak:study
 ```
 
-- `init`: `~/.bookjakbookjak/info.json`을 만들고 기록용 Git 저장소를 `~/.bookjakbookjak/repo`에 설정합니다.
+- `init`: `~/.fhdufhdu/config/bookjakbookjak.json`을 만들고 기록용 Git 저장소를 `~/.fhdufhdu/bookjakbookjak`에 설정합니다.
 - `study`: 영어 리딩 학습과 복습을 진행합니다. 저장소 설정이 없으면 먼저 `bookjakbookjak:init`을 사용합니다.
 
 ## 내부 저장 위치
@@ -33,13 +33,13 @@ bookjakbookjak:study
 설정 파일:
 
 ```text
-~/.bookjakbookjak/info.json
+~/.fhdufhdu/config/bookjakbookjak.json
 ```
 
 기록 저장소 체크아웃:
 
 ```text
-~/.bookjakbookjak/repo
+~/.fhdufhdu/bookjakbookjak
 ```
 
 처음 사용할 때 `bookjakbookjak:init`은 학습 기록을 저장할 Git 저장소 URL을 사용자에게 물어봅니다. 이 프로젝트의 기본 기록 저장소는 아래 URL입니다.

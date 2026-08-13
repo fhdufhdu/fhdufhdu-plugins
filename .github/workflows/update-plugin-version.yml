@@ -23,7 +23,7 @@ jobs:
         env:
           TZ: Asia/Seoul
         run: |
-          version="$(date +'%Y%m%d%H%M%S')"
+          version="$(date +'%Y.%-m%d').$(date +'%s')"
           echo "VERSION=$version" >> "$GITHUB_ENV"
           export VERSION="$version"
           python3 - <<'PY'
@@ -35,7 +35,7 @@ jobs:
 
           plugin_names = [
               "bookjakbookjak",
-              "humanities-wiki",
+              "feel-english",
           ]
 
           plugin_manifests = [
@@ -76,8 +76,8 @@ jobs:
           git add \
             plugins/bookjakbookjak/.codex-plugin/plugin.json \
             plugins/bookjakbookjak/.claude-plugin/plugin.json \
-            plugins/humanities-wiki/.codex-plugin/plugin.json \
-            plugins/humanities-wiki/.claude-plugin/plugin.json \
+            plugins/feel-english/.codex-plugin/plugin.json \
+            plugins/feel-english/.claude-plugin/plugin.json \
             .claude-plugin/marketplace.json
           git commit -m "chore: update plugin version to $VERSION [skip actions]"
           git push

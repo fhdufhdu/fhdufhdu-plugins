@@ -17,10 +17,10 @@
       "category": "Productivity"
     },
     {
-      "name": "humanities-wiki",
+      "name": "feel-english",
       "source": {
         "source": "local",
-        "path": "./plugins/humanities-wiki"
+        "path": "./plugins/feel-english"
       },
       "policy": {
         "installation": "AVAILABLE",

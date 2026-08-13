@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feel English Setup"
+  short_description: "Set up the Feel English learning repository"
+  default_prompt: "Use $init to set up my Feel English learning repository."
