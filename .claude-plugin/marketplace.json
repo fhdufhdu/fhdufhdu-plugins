@@ -10,7 +10,7 @@
       "source": "./plugins/bookjakbookjak",
       "displayName": "BookJakBookJak",
       "description": "English reading setup, sentence-by-sentence study, Korean feedback, and durable review records.",
-      "version": "20260522120812",
+      "version": "2026.813.1786579183",
       "author": {
         "name": "fhdufhdu"
       },
@@ -26,11 +26,11 @@
       ]
     },
     {
-      "name": "humanities-wiki",
-      "source": "./plugins/humanities-wiki",
-      "displayName": "Humanities Wiki",
-      "description": "Humanities videos, essays, meaningful quotes, reflections, and LLM-maintained personal wiki records.",
-      "version": "20260522120812",
+      "name": "feel-english",
+      "source": "./plugins/feel-english",
+      "displayName": "Feel English",
+      "description": "Context-first core word and chunk practice for direct English recall, with durable study records.",
+      "version": "2026.813.1786579183",
       "author": {
         "name": "fhdufhdu"
       },
@@ -39,10 +39,11 @@
       "license": "MIT",
       "category": "productivity",
       "tags": [
-        "humanities",
-        "wiki",
-        "reflection",
-        "knowledge-base"
+        "english",
+        "vocabulary",
+        "chunks",
+        "speaking",
+        "recall"
       ]
     }
   ]

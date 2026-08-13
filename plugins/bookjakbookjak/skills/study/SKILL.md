@@ -1,6 +1,6 @@
 ---
 name: study
-description: BookJakBookJak 영어 리딩 학습과 복습을 진행합니다. 사용자 제공 문서 URL을 문장 단위로 학습하고, 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 복습, ~/.bookjakbookjak/repo 커밋을 수행합니다. 설정이 없으면 bookjakbookjak:init 스킬을 먼저 사용합니다.
+description: BookJakBookJak 영어 리딩 학습과 복습을 진행합니다. 사용자 제공 문서 URL을 문장 단위로 학습하고, 번역 피드백, 단어/문법/약점 기록, 1/4/7/30일 복습, ~/.fhdufhdu/bookjakbookjak 커밋을 수행합니다. 설정이 없으면 bookjakbookjak:init 스킬을 먼저 사용합니다.
 ---
 
 # BookJakBookJak Study
@@ -17,21 +17,21 @@ Before every session, make sure the user's study repo is configured, available l
 
 Use this internal storage root:
 
-`~/.bookjakbookjak`
+`~/.fhdufhdu`
 
 Use this local checkout for the user's study data:
 
-`~/.bookjakbookjak/repo`
+`~/.fhdufhdu/bookjakbookjak`
 
 Use this configuration file:
 
-`~/.bookjakbookjak/info.json`
+`~/.fhdufhdu/config/bookjakbookjak.json`
 
 Before reading or writing records:
 
-1. Verify `~/.bookjakbookjak/info.json` exists and is valid JSON.
-2. Verify `~/.bookjakbookjak/repo` exists and is a Git repository.
-3. Verify `git remote get-url origin` matches `info.json.repo_url`.
+1. Verify `~/.fhdufhdu/config/bookjakbookjak.json` exists and is valid JSON.
+2. Verify `~/.fhdufhdu/bookjakbookjak` exists and is a Git repository.
+3. Verify `git remote get-url origin` matches `bookjakbookjak.json.repo_url`.
 4. If any check fails, tell the user that setup is required and use `bookjakbookjak:init`.
 5. If the repo exists and matches, pull with `--ff-only`.
 
@@ -200,14 +200,14 @@ Always include:
 Before writing:
 
 ```bash
-cd ~/.bookjakbookjak/repo
+cd ~/.fhdufhdu/bookjakbookjak
 git pull --ff-only
 ```
 
 After writing:
 
 ```bash
-cd ~/.bookjakbookjak/repo
+cd ~/.fhdufhdu/bookjakbookjak
 git status --short
 git add daily reviews cards sources persistent
 git commit -m "Add English study record for YYYY-MM-DD"

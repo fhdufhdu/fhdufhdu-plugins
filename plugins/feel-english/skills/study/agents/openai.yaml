@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feel English Study"
+  short_description: "Practice core words and chunks through context"
+  default_prompt: "Use $study to start today’s Feel English practice."

@@ -7,7 +7,7 @@ Codex/Claude용 개인 플러그인 마켓플레이스입니다.
 | 플러그인 | 설명 | README |
 | --- | --- | --- |
 | `bookjakbookjak` | 영어 리딩 설정, 문장별 학습, 복습 기록 관리 | [README](./plugins/bookjakbookjak/README.md) |
-| `humanities-wiki` | 인문학 영상/에세이 링크, 문구, 성찰을 LLM wiki로 기록 | [README](./plugins/humanities-wiki/README.md) |
+| `feel-english` | 핵심 단어를 문맥·chunk·상황 회상으로 익히는 영어 학습 | [README](./plugins/feel-english/README.md) |
 
 ## Codex 설치
 

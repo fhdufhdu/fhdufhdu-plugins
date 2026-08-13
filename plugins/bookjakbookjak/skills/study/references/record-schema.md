@@ -8,23 +8,23 @@
 
 경로:
 
-`~/.bookjakbookjak/info.json`
+`~/.fhdufhdu/config/bookjakbookjak.json`
 
-스킬은 사용자에게 학습 기록을 저장할 Git 저장소 URL을 받은 뒤, 해당 저장소를 `~/.bookjakbookjak/repo`에 클론하고 이 파일을 생성해야 한다.
+스킬은 사용자에게 학습 기록을 저장할 Git 저장소 URL을 받은 뒤, 해당 저장소를 `~/.fhdufhdu/bookjakbookjak`에 클론하고 이 파일을 생성해야 한다.
 
 스키마:
 
 ```json
 {
   "repo_url": "https://github.com/user/english-study-data.git",
-  "repo_path": "/Users/name/.bookjakbookjak/repo",
+  "repo_path": "/Users/name/.fhdufhdu/bookjakbookjak",
   "default_branch": "main",
   "created_at": "YYYY-MM-DDTHH:MM:SSZ",
   "updated_at": "YYYY-MM-DDTHH:MM:SSZ"
 }
 ```
 
-저장소 설정이 바뀌면 `updated_at`을 갱신한다. `info.json`에는 문서 URL, 원문, 학습 이력을 저장하지 않는다. 그런 내용은 클론된 저장소 안에 기록한다.
+저장소 설정이 바뀌면 `updated_at`을 갱신한다. `bookjakbookjak.json`에는 문서 URL, 원문, 학습 이력을 저장하지 않는다. 그런 내용은 클론된 저장소 안에 기록한다.
 
 ## 일일 학습 기록
 
