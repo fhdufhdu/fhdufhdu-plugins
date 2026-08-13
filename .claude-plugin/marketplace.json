@@ -10,7 +10,7 @@
       "source": "./plugins/bookjakbookjak",
       "displayName": "BookJakBookJak",
       "description": "English reading setup, sentence-by-sentence study, Korean feedback, and durable review records.",
-      "version": "2026.813.1786579183",
+      "version": "2026.813.1786581842",
       "author": {
         "name": "fhdufhdu"
       },
@@ -30,7 +30,7 @@
       "source": "./plugins/feel-english",
       "displayName": "Feel English",
       "description": "Context-first core word and chunk practice for direct English recall, with durable study records.",
-      "version": "2026.813.1786579183",
+      "version": "2026.813.1786581842",
       "author": {
         "name": "fhdufhdu"
       },

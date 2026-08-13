@@ -1,6 +1,6 @@
 {
   "name": "feel-english",
-  "version": "2026.813.1786579183+codex.20260813001050",
+  "version": "2026.813.1786581842",
   "description": "Build an English-first sense for core words and chunks through contextual examples, production, recall, and durable study records.",
   "author": {
     "name": "fhdufhdu",
@@ -29,10 +29,10 @@
     ],
     "websiteURL": "https://github.com/fhdufhdu/fhdufhdu-plugins",
     "defaultPrompt": [
-      "Feel English \ud559\uc2b5 \uc800\uc7a5\uc18c\ub97c \uc124\uc815\ud574\uc918.",
-      "\uc624\ub298\uc758 \ud575\uc2ec \ub2e8\uc5b4\uc640 chunk \ud559\uc2b5\uc744 \uc2dc\uc791\ud574\uc918.",
-      "get\uc744 \ubc88\uc5ed\uc5b4 \uc554\uae30 \uc5c6\uc774 \ubb38\ub9e5\uacfc \uc608\ubb38\uc73c\ub85c \uc5f0\uc2b5\uc2dc\ucf1c\uc918.",
-      "\uc9c0\uae08 \ud558\uace0 \uc788\ub294 \uc77c\uc744 \uc601\uc5b4\ub85c \ubc14\ub85c \ub5a0\uc62c\ub9ac\ub294 \uc5f0\uc2b5\uc744 \ud574\ubcf4\uc790."
+      "Feel English 학습 저장소를 설정해줘.",
+      "오늘의 핵심 단어와 chunk 학습을 시작해줘.",
+      "get을 번역어 암기 없이 문맥과 예문으로 연습시켜줘.",
+      "지금 하고 있는 일을 영어로 바로 떠올리는 연습을 해보자."
     ],
     "brandColor": "#0F766E"
   }
