@@ -8,6 +8,7 @@ Codex/Claude용 개인 플러그인 마켓플레이스입니다.
 | --- | --- | --- |
 | `bookjakbookjak` | 영어 리딩 설정, 문장별 학습, 복습 기록 관리 | [README](./plugins/bookjakbookjak/README.md) |
 | `feel-english` | 핵심 단어를 문맥·chunk·상황 회상으로 익히는 영어 학습 | [README](./plugins/feel-english/README.md) |
+| `document-driven-dev` | 단계별 문서와 태스크로 설계·구현·검증·재개를 관리하는 개발 워크플로 | [README](./plugins/document-driven-dev/README.md) |
 
 ## Codex 설치
 

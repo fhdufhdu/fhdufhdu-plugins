@@ -1,0 +1,37 @@
+{
+  "name": "document-driven-dev",
+  "version": "0.1.0",
+  "description": "Plan, implement, validate, and resume software changes through durable phase documents, task contracts, and implementation evidence.",
+  "author": {
+    "name": "fhdufhdu",
+    "url": "https://github.com/fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "development",
+    "architecture",
+    "planning",
+    "orchestration",
+    "documentation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Document Driven Dev",
+    "shortDescription": "Plan, execute, and resume development with documented tasks.",
+    "longDescription": "A project-independent workflow for documented discovery, requirements, architecture, shared contracts, task delegation, implementation evidence, integration review, and resumable progress. Supports planning only, full execution, and continuation of existing plans.",
+    "developerName": "fhdufhdu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+    "defaultPrompt": [
+      "현재 프로젝트의 변경을 단계별 문서와 태스크로 계획해줘. 지금은 구현하지 마.",
+      "이 기능을 문서 기반으로 설계부터 구현과 검증까지 진행해줘.",
+      "기존 진행 문서와 실제 코드를 확인하고 남은 작업을 이어서 진행해줘."
+    ]
+  }
+}

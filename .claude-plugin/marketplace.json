@@ -45,6 +45,27 @@
         "speaking",
         "recall"
       ]
+    },
+    {
+      "name": "document-driven-dev",
+      "source": "./plugins/document-driven-dev",
+      "displayName": "Document Driven Dev",
+      "description": "Plan, implement, validate, and resume software changes through durable phase documents, task contracts, and implementation evidence.",
+      "version": "0.1.0",
+      "author": {
+        "name": "fhdufhdu"
+      },
+      "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "license": "MIT",
+      "category": "productivity",
+      "tags": [
+        "development",
+        "architecture",
+        "planning",
+        "orchestration",
+        "documentation"
+      ]
     }
   ]
 }

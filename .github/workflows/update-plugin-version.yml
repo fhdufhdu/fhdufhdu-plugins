@@ -36,6 +36,7 @@ jobs:
           plugin_names = [
               "bookjakbookjak",
               "feel-english",
+              "document-driven-dev",
           ]
 
           plugin_manifests = [
@@ -78,6 +79,8 @@ jobs:
             plugins/bookjakbookjak/.claude-plugin/plugin.json \
             plugins/feel-english/.codex-plugin/plugin.json \
             plugins/feel-english/.claude-plugin/plugin.json \
+            plugins/document-driven-dev/.codex-plugin/plugin.json \
+            plugins/document-driven-dev/.claude-plugin/plugin.json \
             .claude-plugin/marketplace.json
           git commit -m "chore: update plugin version to $VERSION [skip actions]"
           git push
