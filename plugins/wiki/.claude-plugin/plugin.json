@@ -1,0 +1,11 @@
+{
+  "name": "wiki",
+  "version": "0.1.0",
+  "description": "Set up wwiki, capture Markdown sources, and compile a source-preserving knowledge wiki.",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT"
+}

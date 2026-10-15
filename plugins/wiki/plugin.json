@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "wiki",
+  "version": "0.1.0",
+  "description": "Set up wwiki, capture Markdown sources, and compile a source-preserving knowledge wiki.",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "license": "MIT",
+  "keywords": [
+    "wiki",
+    "knowledge",
+    "sources",
+    "compile",
+    "wwiki"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Wiki",
+        "shortDescription": "Capture and compile your wiki",
+        "longDescription": "Set up the wwiki CLI and knowledge repository, choose BM25 or background embeddings, capture raw Markdown sources, and compile them into linked wiki pages while preserving originals.",
+        "developerName": "fhdufhdu",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+        "defaultPrompt": [
+          "위키 환경을 초기화해줘.",
+          "이 내용을 위키 source로 기록해줘.",
+          "미컴파일 source를 위키로 컴파일해줘."
+        ]
+      }
+    }
+  }
+}

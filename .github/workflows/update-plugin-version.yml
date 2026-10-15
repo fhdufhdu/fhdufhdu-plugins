@@ -37,6 +37,7 @@ jobs:
               "bookjakbookjak",
               "feel-english",
               "document-driven-dev",
+              "wiki",
           ]
 
           plugin_manifests = [
@@ -45,6 +46,7 @@ jobs:
               for path in (
                   Path(f"plugins/{name}/.codex-plugin/plugin.json"),
                   Path(f"plugins/{name}/.claude-plugin/plugin.json"),
+                  *([Path(f"plugins/{name}/plugin.json")] if Path(f"plugins/{name}/plugin.json").exists() else []),
               )
           ]
 
@@ -81,6 +83,9 @@ jobs:
             plugins/feel-english/.claude-plugin/plugin.json \
             plugins/document-driven-dev/.codex-plugin/plugin.json \
             plugins/document-driven-dev/.claude-plugin/plugin.json \
+            plugins/wiki/plugin.json \
+            plugins/wiki/.codex-plugin/plugin.json \
+            plugins/wiki/.claude-plugin/plugin.json \
             .claude-plugin/marketplace.json
           git commit -m "chore: update plugin version to $VERSION [skip actions]"
           git push
