@@ -29,7 +29,7 @@ done
 if [ "$ALL" = 1 ]; then cat "$LOG"; exit 0; fi
 
 if [ -n "$RUN" ]; then
-  awk -F'\t' -v r="$RUN" '$2 == r { printf "%s\t%s\t%.1fMB\t%s\t%s\n", $4, $1, $5/1024, $6, $7 }' "$LOG"
+  awk -F'\t' -v r="$RUN" '$2 == r { size = ($5 ~ /^[0-9]+$/) ? sprintf("%.1fMB", $5/1024) : "-"; printf "%s\t%s\t%s\t%s\t%s\n", $4, $1, size, $6, $7 }' "$LOG"
   exit 0
 fi
 

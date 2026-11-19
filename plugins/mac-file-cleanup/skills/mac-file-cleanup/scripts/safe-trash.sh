@@ -50,27 +50,33 @@ log() { # result kb path reason
   printf '%s\t%s\t%s\t%s\n' "$1" "$2" "$(clean_field "$3")" "$4"
 }
 
+# APFS는 기본적으로 대소문자를 구분하지 않으므로(~/documents == ~/Documents)
+# 모든 비교는 양쪽을 소문자로 바꿔서 한다.
+lower() { printf '%s' "$1" | tr '[:upper:]' '[:lower:]'; }
+LHOME=$(lower "$HOME")
+
 # 경로 자체나 그 위로 올라가는 경로가 이 목록과 같으면 거부한다(빈 변수로 경로가 줄어든 경우 대비).
 is_critical() {
-  local p="$1"
+  local p
+  p=$(lower "$1")
   case "$p" in
-    /|/System|/System/*|/usr|/usr/*|/bin|/bin/*|/sbin|/sbin/*|/private|/etc|/var|/Library|/Volumes|/Users|/Applications|/cores|/opt)
-      case "$p" in /usr/local/*|/opt/homebrew/*) return 1 ;; esac
+    /usr/local/*|/opt/homebrew/*) ;;
+    /|/system|/system/*|/usr|/usr/*|/bin|/bin/*|/sbin|/sbin/*|/private|/etc|/var|/library|/volumes|/users|/applications|/cores|/opt)
       return 0 ;;
-    "$HOME"|"$HOME/Library"|"$HOME/Desktop"|"$HOME/Documents"|"$HOME/Downloads"|"$HOME/Movies"|"$HOME/Music"|"$HOME/Pictures"|"$HOME/.Trash"|"$HOME/.Trash/"*)
+    "$LHOME"|"$LHOME/library"|"$LHOME/desktop"|"$LHOME/documents"|"$LHOME/downloads"|"$LHOME/movies"|"$LHOME/music"|"$LHOME/pictures"|"$LHOME/.trash"|"$LHOME/.trash/"*)
       return 0 ;;
   esac
   # ~/Library 바로 아래 폴더 자체(Caches, Logs, Containers ...)
-  [ "$(dirname "$p")" = "$HOME/Library" ] && return 0
+  [ "$(dirname "$p")" = "$LHOME/library" ] && return 0
   return 1
 }
 
 # protection.md의 핵심 항목. 전체 목록은 에이전트가 미리 적용한다.
 is_protected() {
-  local p="$1" lc
-  lc=$(printf '%s' "$p" | tr '[:upper:]' '[:lower:]')
+  local lc
+  lc=$(lower "$1")
   case "$lc" in
-    "$(printf '%s' "$HOME" | tr '[:upper:]' '[:lower:]')"/.claude|*/.claude/projects*|*/.claude/file-history*|*/.claude/history.jsonl) return 0 ;;
+    "$LHOME"/.claude|*/.claude/projects*|*/.claude/file-history*|*/.claude/history.jsonl) return 0 ;;
     */.codex|*/.codex/sessions*|*/.codex/auth.json) return 0 ;;
     */library/mobile\ documents|*/library/mobile\ documents/*/documents|*/library/keychains*|*/library/accounts*) return 0 ;;
     */library/caches/ms-playwright*|*/library/caches/cypress*|*/library/caches/camoufox*|*/.cache/puppeteer*) return 0 ;;
@@ -78,7 +84,7 @@ is_protected() {
     */library/application\ support/mobilesync/backup*) return 0 ;;
   esac
   # iCloud 앱 컨테이너 자체(~/Library/Mobile Documents/<컨테이너>)
-  [ "$(dirname "$p")" = "$HOME/Library/Mobile Documents" ] && return 0
+  [ "$(dirname "$lc")" = "$LHOME/library/mobile documents" ] && return 0
   return 1
 }
 
@@ -114,10 +120,11 @@ for p in "$@"; do
     fi
   fi
 
-  kb=$(/usr/bin/du -k -x -s "$p" 2>/dev/null | cut -f1); kb=${kb:-0}
+  # 거부한 경로는 크기를 재지 않는다(/Users 같은 큰 경로를 재느라 멈추지 않도록).
   if [ -n "$reason" ]; then
-    log SKIPPED "$kb" "$p" "$reason"; rc=1; continue
+    log SKIPPED - "$p" "$reason"; rc=1; continue
   fi
+  kb=$(/usr/bin/du -k -x -s "$p" 2>/dev/null | cut -f1); kb=${kb:-0}
   if [ "$DRY" = 1 ]; then
     log DRYRUN "$kb" "$p" "검증 통과"; continue
   fi
