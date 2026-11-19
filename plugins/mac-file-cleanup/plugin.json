@@ -20,7 +20,7 @@
       "interface": {
         "displayName": "Mac 파일 정리",
         "shortDescription": "Mac 디스크 분석과 정리 미리보기",
-        "longDescription": "macOS 기본 도구로 디스크 사용량을 분석하고 캐시, 오래된 로그, 설치 파일, 빌드 산출물의 정리 후보를 미리 봅니다. 검토한 항목을 이동하거나 휴지통으로 보낼 수 있습니다.",
+        "longDescription": "macOS 기본 도구로 디스크 사용량을 분석하고 캐시, 오래된 로그, 설치 파일, 빌드 산출물, Docker·IDE·Xcode 같은 개발 도구 데이터의 정리 후보를 미리 봅니다. 검토한 항목을 이동하거나 휴지통으로 보낼 수 있습니다.",
         "developerName": "fhdufhdu",
         "category": "Productivity",
         "capabilities": [
