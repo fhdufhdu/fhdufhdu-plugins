@@ -1,6 +1,6 @@
 {
   "name": "mac-file-cleanup",
-  "version": "2026.1119.1795065150",
+  "version": "2026.1119.1795065396",
   "description": "Analyze and clean Mac storage, uninstall apps with their leftovers, and check system health using native macOS tools.",
   "author": {
     "name": "fhdufhdu"
