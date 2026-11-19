@@ -10,6 +10,7 @@ Codex/Claude용 개인 플러그인 마켓플레이스입니다.
 | `feel-english` | 핵심 단어를 문맥·chunk·상황 회상으로 익히는 영어 학습 | [README](./plugins/feel-english/README.md) |
 | `document-driven-dev` | 단계별 문서와 태스크로 설계·구현·검증·재개를 관리하는 개발 워크플로 | [README](./plugins/document-driven-dev/README.md) |
 | `wiki` | wwiki 환경 구성, source 기록, 원본을 보존하는 위키 컴파일 | [README](./plugins/wiki/README.md) |
+| `mac-file-cleanup` | Mac 디스크 분석, Mole 정리 미리보기, 지정한 폴더의 파일 분류 | [README](./plugins/mac-file-cleanup/README.md) |
 
 ## Codex 설치
 

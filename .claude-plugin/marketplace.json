@@ -87,6 +87,25 @@
         "compile",
         "wwiki"
       ]
+    },
+    {
+      "name": "mac-file-cleanup",
+      "source": "./plugins/mac-file-cleanup",
+      "displayName": "Mac 파일 정리",
+      "description": "Analyze Mac storage, preview Mole cleanup, and organize files in selected folders.",
+      "version": "0.1.0",
+      "author": {
+        "name": "fhdufhdu"
+      },
+      "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+      "category": "productivity",
+      "tags": [
+        "macos",
+        "storage",
+        "file-organization",
+        "mole"
+      ]
     }
   ]
 }

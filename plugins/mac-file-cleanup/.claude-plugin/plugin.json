@@ -1,0 +1,10 @@
+{
+  "name": "mac-file-cleanup",
+  "version": "0.1.0",
+  "description": "Analyze Mac storage, preview Mole cleanup, and organize files in selected folders.",
+  "author": {
+    "name": "fhdufhdu"
+  },
+  "homepage": "https://github.com/fhdufhdu/fhdufhdu-plugins",
+  "repository": "https://github.com/fhdufhdu/fhdufhdu-plugins"
+}

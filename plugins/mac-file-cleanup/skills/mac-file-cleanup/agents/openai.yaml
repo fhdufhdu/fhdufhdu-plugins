@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mac 파일 정리"
+  short_description: "Mac 디스크 사용량 분석과 폴더별 파일 정리 미리보기"
+  default_prompt: "$mac-file-cleanup 다운로드 폴더에서 용량을 많이 차지하는 파일과 정리 후보를 보여줘."

@@ -51,6 +51,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "mac-file-cleanup",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mac-file-cleanup"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

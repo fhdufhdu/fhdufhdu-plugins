@@ -38,6 +38,7 @@ jobs:
               "feel-english",
               "document-driven-dev",
               "wiki",
+              "mac-file-cleanup",
           ]
 
           plugin_manifests = [
@@ -86,6 +87,9 @@ jobs:
             plugins/wiki/plugin.json \
             plugins/wiki/.codex-plugin/plugin.json \
             plugins/wiki/.claude-plugin/plugin.json \
+            plugins/mac-file-cleanup/plugin.json \
+            plugins/mac-file-cleanup/.codex-plugin/plugin.json \
+            plugins/mac-file-cleanup/.claude-plugin/plugin.json \
             .claude-plugin/marketplace.json
           git commit -m "chore: update plugin version to $VERSION [skip actions]"
           git push
