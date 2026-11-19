@@ -1,6 +1,6 @@
 ---
 name: mac-app-uninstall
-description: "macOS 앱을 관련 캐시·로그·LaunchAgent와 함께 제거한다. 앱 번들 ID로 연결되는 사용자 영역 파일만 찾아 미리보기를 만들고, 개인 데이터는 기본으로 남기며, 승인한 항목만 휴지통으로 보낸다. 'XX 앱 완전히 지워줘', '앱 삭제', '안 쓰는 앱 정리', 'Homebrew로 설치한 앱 제거'에 사용한다."
+description: "macOS 앱을 관련 캐시·로그·LaunchAgent와 함께 제거한다. 앱 번들 ID로 연결되는 사용자 영역 파일만 찾아 미리보기를 만들고, 개인 데이터는 기본으로 남기며, 승인한 항목만 휴지통으로 보낸다. 'XX 앱 완전히 지워줘', '앱 삭제', '안 쓰는 앱 정리', 'Homebrew로 설치한 앱 제거', '삭제한 앱이 남긴 흔적 찾아줘', '백그라운드 활동·로그인 항목 중 지워진 앱 정리', 제거 도구가 보여 준 'Personal data kept' 목록 정리에 사용한다."
 ---
 
 # Mac 앱 제거
@@ -67,3 +67,46 @@ TSV 항목의 분류는 이렇다.
 - 휴지통으로 보낸 것, 건너뛴 것(사유), 실패한 것, 남겨 둔 개인 데이터 경로를 나눠 보고한다. 실패가 있으면 "제거 완료"라고 말하지 않는다.
 - 셸·에이전트 설정에 제거한 앱 경로가 남아 있는지 확인해 **파일과 줄 번호만** 알린다. 내용은 출력하지 않는다(자격 증명이 있을 수 있다). 대상: `~/.zshrc`, `~/.zprofile`, `~/.zshenv`, `~/.bashrc`, `~/.bash_profile`, `~/.profile`, `~/.config/fish/config.fish`, `~/.claude/settings.json`, `~/.claude.json`, `~/.codex/config.toml`, `~/.codex/hooks.json`, `~/.cursor/mcp.json`, `~/.gemini/settings.json`. 예: `grep -nF "/Applications/Some App.app" ~/.zshrc | cut -d: -f1`. 1MB가 넘거나 심볼릭 링크인 파일은 건너뛴다. 설정은 수정하지 않는다.
 - 휴지통을 비워야 공간이 회수되며, 비우기 전에는 Finder에서 되돌릴 수 있다고 알린다.
+
+## 6. 이미 지운 앱의 흔적
+
+앱은 이미 없고 데이터만 남은 경우다. "삭제한 앱 흔적 찾아줘", "백그라운드 활동 중 지워진 앱 정리"처럼 대상 앱을 정하지 않은 요청에 쓴다.
+
+### 찾기
+
+[find-orphans.sh](scripts/find-orphans.sh)를 실행한다. 읽기 전용이고 10초 안팎 걸린다.
+
+```bash
+scripts/find-orphans.sh
+```
+
+설치된 앱·앱 안의 헬퍼와 확장·권한 헬퍼·실행 파일이 있는 LaunchAgent의 번들 ID를 모아, `~/Library`와 앱별 캐시 폴더(`getconf DARWIN_USER_CACHE_DIR`)의 번들 ID 이름 항목과 대조한다. `# installed_ids` 값이 비정상적으로 작으면(스크립트는 20개 미만이면 중단) Spotlight나 권한 문제이므로 결과를 믿지 않는다.
+
+| 분류 | 의미 | 처리 |
+| --- | --- | --- |
+| `ORPHAN` | 어떤 설치본에도 없는 번들 ID의 잔여물 | 목록으로 보여 주고, 승인하면 휴지통 |
+| `REVIEW` | 설치된 앱과 같은 회사 제품(예: Teams가 있는데 Office 데이터), 또는 비밀번호 관리자·VPN·클라우드 동기화·IDE처럼 보호 카테고리 | **기본 미선택**. 공용 데이터일 수 있다고 알리고 항목을 직접 고를 때만 |
+| `AGENT_ORPHAN` | `~/Library/LaunchAgents`의 plist인데 실행 파일이 사라짐 | 승인하면 `launchctl bootout "gui/$(id -u)" <plist>` 후 휴지통 |
+| `SYSTEM_ORPHAN` | `/Library/LaunchAgents`·`/Library/LaunchDaemons`의 plist인데 실행 파일이 사라짐 | 직접 지우지 않는다. 사용자가 실행할 `sudo launchctl bootout system/<라벨>`과 `sudo rm -f <plist>` 명령만 한 블록으로 안내 |
+
+### 보여 주기
+
+번들 ID별로 묶어 크기순으로 요약하고(회사·앱 이름을 알 수 있으면 함께), 전체 경로 목록은 파일로 남겨 링크한다. 항목이 많으면 대화에는 큰 것과 분류별 개수만 적는다. `REVIEW`는 왜 확실하지 않은지 한 줄씩 적는다.
+
+### 정리
+
+승인한 경로만 [safe-trash.sh](../mac-file-cleanup/scripts/safe-trash.sh)로 보낸다. 라벨은 `-l orphans`. 경로가 수백 개면 파일에서 읽어 여러 번에 나눠 넘기고, 끝난 뒤 남은 경로가 없는지 다시 확인해 보고한다.
+
+### 사용자가 붙여넣은 잔여물 목록
+
+앱 제거 도구가 보여 준 "Personal data kept" 같은 목록을 붙여넣고 정리를 요청하면, 경로마다 아래를 확인한 뒤 처리한다.
+
+- **대소문자**: APFS는 대소문자를 구분하지 않는다. `~/.config/Herdr`는 실제로는 `~/.config/herdr`이고, 이름이 같은 CLI 도구가 함께 쓰는 폴더일 수 있다. `ls -d ~/.config/*`로 실제 이름을 보고, 그 이름을 쓰는 실행 파일(`~/.local/bin`, Homebrew)·실행 중인 프로세스(`pgrep -fl <이름>`)가 있으면 나머지만 먼저 정리하고 그 경로는 따로 묻는다.
+- **실행 중인 도구**: 함께 지워야 할 프로세스가 있으면 사용자가 그 도구까지 정리하겠다고 한 뒤에만 종료한다. 그 도구가 남긴 `~/.local/bin` 링크·`~/.local/share`·`~/.local/state`·스킬 폴더도 함께 찾아 보여 준다.
+- `/var/folders/...`처럼 붙여넣은 절대 경로도 현재 사용자 소유인지 확인하고 safe-trash로 보낸다.
+
+### 남겨 둘 것
+
+- 내용이 빈(`<dict/>`) `com.google.keystone.*.plist`: 자동 업데이트를 막으려고 일부러 둔 파일이다. 스크립트도 실행 파일이 없는 빈 plist는 건너뛴다.
+- `sfltool dumpbtm`의 로그인 항목 목록에서 경로가 `/Users/<UID 숫자>/...`로 보이는 항목은 실제 홈 경로로 바꿔 확인한다. 이 표기 때문에 사라진 것처럼 보일 뿐인 경우가 많다.
+- 확장 프로그램은 `pluginkit -mAvvv`의 `Path`가 사라진 것만 보고한다. 앱을 지우면 보통 같이 사라지며, 남았으면 시스템 설정 > 일반 > 로그인 항목 및 확장 프로그램에서 끄도록 안내한다.

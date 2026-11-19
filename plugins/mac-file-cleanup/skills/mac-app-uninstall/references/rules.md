@@ -29,4 +29,15 @@
 ## 제거 후
 
 - 셸·에이전트 설정 파일에 제거한 앱 경로가 남았는지 **파일과 줄 번호만** 알린다. 내용은 출력하지 않고 수정하지 않는다.
-- 이미 앱이 지워진 뒤 남은 잔여물은 mac-file-cleanup의 "제거한 앱의 잔여 파일" 규칙으로 찾는다.
+- 이미 앱이 지워진 뒤 남은 잔여물은 [find-orphans.sh](../scripts/find-orphans.sh)로 찾는다(SKILL.md 6단계).
+
+## 이미 지운 앱의 흔적 판정
+
+- **설치 목록은 넓게 잡는다.** 앱 번들만 보면 헬퍼·확장·iPad 앱(`Wrapper/*.app`)의 데이터를 잔여물로 오판한다. `/Applications`, `/Library/Application Support`, `/Library/PrivilegedHelperTools`, `/Library/SystemExtensions` 아래의 모든 `Info.plist`와 Spotlight의 앱 번들(휴지통 제외)을 설치된 것으로 본다. 설치 목록이 넓을수록 잔여물로 잡히는 항목이 줄어 안전한 쪽으로 틀린다.
+- **LaunchAgent 이름은 실행 파일이 있을 때만 설치로 친다.** 실행 파일이 사라진 에이전트(`com.gone.app.agent`)를 설치 목록에 넣으면 그 앱의 데이터(`com.gone.app`)가 접두사 규칙으로 설치된 것처럼 보인다.
+- **이름 정규화**: 확장자(`.plist`, `.savedState`, `.binarycookies`, `.sfl*`), 팀 ID 접두사(`WQL32M5H24.`), `group.` 접두사, `.ShipIt…`, ByHost·CrashReporter의 UUID 접미사를 떼고 비교한다. 마디가 3개 미만이거나 로그·잠금 파일 확장자면 번들 ID로 보지 않는다.
+- **같은 앱으로 보는 경우**: 같은 ID, 한쪽이 다른 쪽의 접두사, 앞 세 마디가 같음.
+- **같은 회사 제품은 확실하지 않다.** Teams가 남아 있으면 Office·OneDrive 데이터에 공용 폴더(`com.microsoft.shared`, `oneauth`, `entrabroker`)가 섞인다. 회사 마디(`com.<회사>`)가 설치된 앱과 같으면 `REVIEW`로 낮춘다.
+- **Apple 것은 제외**: `com.apple.*`, `systemgroup.*`, 그리고 단축어의 옛 번들 ID `is.workflow.*`.
+- **시스템 영역은 안내만 한다.** `/Library/LaunchDaemons` 등은 sudo가 필요하다. 에이전트는 비밀번호를 입력할 수 없으므로 사용자가 실행할 명령만 준다.
+- **macOS 경로는 대소문자를 구분하지 않는다.** 제거 도구 목록의 `~/.config/Atlas`가 실제로는 다른 CLI 도구가 쓰는 `~/.config/atlas`일 수 있다.
