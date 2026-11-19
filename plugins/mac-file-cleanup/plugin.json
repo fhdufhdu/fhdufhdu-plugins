@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "mac-file-cleanup",
   "version": "2026.1119.1795052226",
-  "description": "Analyze Mac storage, preview Mole cleanup, and organize files in selected folders.",
+  "description": "Analyze Mac storage, preview file cleanup, and organize selected folders using native macOS tools.",
   "author": {
     "name": "fhdufhdu"
   },
@@ -12,7 +12,7 @@
     "macos",
     "storage",
     "file-organization",
-    "mole"
+    "cleanup"
   ],
   "extensions": {
     "com.openai": {
@@ -20,7 +20,7 @@
       "interface": {
         "displayName": "Mac 파일 정리",
         "shortDescription": "Mac 디스크 분석과 정리 미리보기",
-        "longDescription": "macOS에서 디스크 사용량을 분석하고 Mole 정리 후보를 미리 봅니다. 지정한 폴더에서는 큰 파일과 중복 후보를 확인하고 선택한 파일을 정리합니다.",
+        "longDescription": "macOS 기본 도구로 디스크 사용량을 분석하고 캐시, 오래된 로그, 설치 파일, 빌드 산출물의 정리 후보를 미리 봅니다. 검토한 항목을 이동하거나 휴지통으로 보낼 수 있습니다.",
         "developerName": "fhdufhdu",
         "category": "Productivity",
         "capabilities": [

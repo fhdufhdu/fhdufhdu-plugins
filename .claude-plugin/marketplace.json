@@ -92,7 +92,7 @@
       "name": "mac-file-cleanup",
       "source": "./plugins/mac-file-cleanup",
       "displayName": "Mac 파일 정리",
-      "description": "Analyze Mac storage, preview Mole cleanup, and organize files in selected folders.",
+      "description": "Analyze Mac storage, preview file cleanup, and organize selected folders using native macOS tools.",
       "version": "2026.1119.1795052226",
       "author": {
         "name": "fhdufhdu"
@@ -104,7 +104,7 @@
         "macos",
         "storage",
         "file-organization",
-        "mole"
+        "cleanup"
       ]
     }
   ]
