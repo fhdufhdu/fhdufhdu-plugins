@@ -92,7 +92,7 @@
       "name": "mac-file-cleanup",
       "source": "./plugins/mac-file-cleanup",
       "displayName": "Mac 파일 정리",
-      "description": "Analyze Mac storage, preview file cleanup, and organize selected folders using native macOS tools.",
+      "description": "Analyze and clean Mac storage, uninstall apps with their leftovers, and check system health using native macOS tools.",
       "version": "2026.1119.1795061071",
       "author": {
         "name": "fhdufhdu"

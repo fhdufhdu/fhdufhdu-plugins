@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mac 앱 제거"
+  short_description: "앱과 관련 캐시·로그를 함께 제거하고 개인 데이터는 남기기"
+  default_prompt: "$mac-app-uninstall 안 쓰는 앱을 크기순으로 보여주고 제거할 앱을 고르게 해줘."

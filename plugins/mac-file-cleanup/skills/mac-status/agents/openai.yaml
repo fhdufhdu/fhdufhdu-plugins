@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mac 상태와 최적화"
+  short_description: "CPU·메모리·디스크·배터리 진단과 관리자 권한 없는 유지보수"
+  default_prompt: "$mac-status 내 Mac 상태를 진단하고 필요한 최적화를 알려줘."
